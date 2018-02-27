@@ -1,0 +1,15 @@
+{
+  "name": "@things-elements/things-scene-mpi",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "things-shell": true,
+  "license": "http://license.hatiolab.com/EULA",
+  "author": "Hatio Lab. <heartyoh@hatiolab.com>",
+  "devDependencies": {
+    "@hatiolab/things-shell": "^0.2.27",
+    "@things-elements/things-scene-mqtt": "^0.1.15"
+  },
+  "dependencies": {
+    "@hatiolab/things-scene": "^2.2.44"
+  }
+}

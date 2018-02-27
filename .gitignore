@@ -1,0 +1,11 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+coverage
+dist
+node_modules
+.DS_Store
+*.report.html
+bower_components
+licenses/*.*
