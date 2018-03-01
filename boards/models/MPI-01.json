@@ -4,11 +4,11 @@
   "type": "model-layer",
   "translate": {
     "x": 0,
-    "y": 188.875
+    "y": 173.875
   },
   "scale": {
-    "x": 0.63375,
-    "y": 0.63375
+    "x": 0.98375,
+    "y": 0.98375
   },
   "components": [
     {
@@ -42,51 +42,6 @@
       "topic": "xyz"
     },
     {
-      "type": "seven-segment",
-      "left": 103.55029585798806,
-      "top": 195.7593688362918,
-      "width": 196.25246548323483,
-      "height": 300.00000000000006,
-      "fillStyle": "",
-      "strokeStyle": "rgb(1, 139, 16)",
-      "angle": 10,
-      "ratioLtoW": 4.5,
-      "ratioLtoS": 32,
-      "rotation": 0,
-      "digit": "7",
-      "id": "digit-1"
-    },
-    {
-      "type": "seven-segment",
-      "left": 316.56804733727796,
-      "top": 195.7593688362918,
-      "width": 196.25246548323486,
-      "height": 300.00000000000006,
-      "fillStyle": "",
-      "strokeStyle": "rgb(1, 139, 16)",
-      "angle": 10,
-      "ratioLtoW": 4.5,
-      "ratioLtoS": 32,
-      "rotation": 0,
-      "digit": "4",
-      "id": "digit-2"
-    },
-    {
-      "type": "seven-segment",
-      "left": 529.585798816568,
-      "top": 195.7593688362918,
-      "width": 196.2524654832348,
-      "height": 300.00000000000006,
-      "fillStyle": "",
-      "strokeStyle": "rgb(1, 139, 16)",
-      "angle": 10,
-      "ratioLtoW": 4.5,
-      "ratioLtoS": 32,
-      "rotation": 0,
-      "digit": "3",
-      "id": "digit-3"
-    },
-    {
       "type": "random",
       "xx": 0,
       "left": 6.804733727810643,
@@ -95,7 +50,7 @@
       "height": 99.99999999999994,
       "hidden": true,
       "dataFormat": "json",
-      "format": "d12",
+      "format": "d100",
       "period": 1000,
       "count": 3,
       "rotation": 0,
@@ -103,22 +58,94 @@
         {
           "rule": "value",
           "accessor": "0",
-          "target": "#digit-1",
+          "target": "#ss-01",
           "property": "value"
         },
         {
           "rule": "value",
           "accessor": "1",
-          "target": "#digit-2",
+          "target": "#ss-02",
           "property": "value"
         },
         {
           "rule": "value",
           "accessor": "2",
-          "target": "#digit-3",
+          "target": "#ss-03",
           "property": "value"
         }
       ]
+    },
+    {
+      "type": "seven-segment",
+      "xx": 0,
+      "left": 37.61118170266835,
+      "top": 182.52858958068614,
+      "width": 243.96442185514613,
+      "height": 300,
+      "fillStyle": "",
+      "strokeStyle": "darkgray",
+      "pattern": "##",
+      "value": "00",
+      "digitHeight": 20,
+      "digitWidth": 10,
+      "digitDistance": 2.5,
+      "displayAngle": 12,
+      "segmentWidth": 2.5,
+      "segmentDistance": 0.2,
+      "segmentCount": 7,
+      "cornerType": 0,
+      "colorOn": "rgb(10, 1, 65)",
+      "colorOff": "lightgray",
+      "rotation": 0,
+      "id": "ss-01"
+    },
+    {
+      "type": "seven-segment",
+      "xx": 0,
+      "left": 289.7077509529861,
+      "top": 182.52858958068614,
+      "width": 243.96442185514604,
+      "height": 300,
+      "fillStyle": "",
+      "strokeStyle": "darkgray",
+      "pattern": "##",
+      "value": "00",
+      "digitHeight": 20,
+      "digitWidth": 10,
+      "digitDistance": 2.5,
+      "displayAngle": 12,
+      "segmentWidth": 2.5,
+      "segmentDistance": 0.2,
+      "segmentCount": 7,
+      "cornerType": 0,
+      "colorOn": "rgb(10, 1, 65)",
+      "colorOff": "lightgray",
+      "rotation": 0,
+      "id": "ss-02"
+    },
+    {
+      "type": "seven-segment",
+      "xx": 0,
+      "left": 541.8043202033037,
+      "top": 182.52858958068614,
+      "width": 243.96442185514604,
+      "height": 300,
+      "fillStyle": "",
+      "strokeStyle": "darkgray",
+      "pattern": "##",
+      "value": "00",
+      "digitHeight": 20,
+      "digitWidth": 10,
+      "digitDistance": 2.5,
+      "displayAngle": 12,
+      "segmentWidth": 2.5,
+      "segmentDistance": 0.2,
+      "segmentCount": 7,
+      "cornerType": 0,
+      "colorOn": "rgb(10, 1, 65)",
+      "colorOff": "lightgray",
+      "rotation": 0,
+      "id": "ss-03"
     }
   ]
 }

@@ -3,38 +3,91 @@ const NATURE = {
   resizable: true,
   rotatable: true,
   properties: [{
-    type: 'number',
-    label: 'angle',
-    name: 'angle',
-    placeholder: '-50 ~ 50'
+    type: 'string',
+    label: 'value',
+    name: 'value',
+    placeholder: '12:34:56'
+  }, {
+    type: 'string',
+    label: 'pattern',
+    name: 'pattern',
+    placeholder: '##:##:##'
   }, {
     type: 'number',
-    label: 'length to width ratio',
-    name: 'ratioLtoW',
-    placeholder: '5 ~ 32'
+    label: 'digit height',
+    name: 'digitHeight',
+    placeholder: '20'
   }, {
     type: 'number',
-    label: 'length to spacing ratio',
-    name: 'ratioLtoS',
-    placeholder: '-5 ~ 5'
+    label: 'digit width',
+    name: 'digitWidth',
+    placeholder: '10'
+  }, {
+    type: 'number',
+    label: 'digit distance',
+    name: 'digitDistance',
+    placeholder: '2.5'
+  }, {
+    type: 'number',
+    label: 'display angle',
+    name: 'displayAngle',
+    placeholder: '12'
+  }, {
+    type: 'number',
+    label: 'segment width',
+    name: 'segmentWidth',
+    placeholder: '2.5'
+  }, {
+    type: 'number',
+    label: 'segment distance',
+    name: 'segmentDistance',
+    placeholder: '0.2'
   }, {
     type: 'select',
-    label: 'digit',
-    name: 'digit',
+    label: 'segment count',
+    name: 'segmentCount',
     property: {
-      options: Array(12).fill().map((o, i) => i).map(n => {
-        return {
-          display: n < 10 ? n : n == 10 ? 'Blank' : 'D',
-          value: n
-        }
-      })
+      options: [{
+        display: 7,
+        value: 7
+      }, {
+        display: 14,
+        value: 14
+      }, {
+        display: 16,
+        value: 16
+      }]
     }
+  }, {
+    type: 'select',
+    label: 'corner type',
+    name: 'cornerType',
+    property: {
+      options: [{
+        display: 'SymmetricCorner',
+        value: 0
+      }, {
+        display: 'SquaredCorner',
+        value: 1
+      }, {
+        display: 'RoundedCorner',
+        value: 2
+      }]
+    }
+  }, {
+    type: 'color',
+    label: 'color-on',
+    name: 'colorOn'
+  }, {
+    type: 'color',
+    label: 'color-off',
+    name: 'colorOff'
   }],
-  'value-property': 'digit'
+  'value-property': 'value'
 };
 
 import { Component, RectPath, Shape } from '@hatiolab/things-scene';
-import { Seven, Digit } from 'seven-segment';
+import SegmentDisplay from './segment-display';
 
 export default class SevenSegment extends RectPath(Shape) {
 
@@ -44,62 +97,39 @@ export default class SevenSegment extends RectPath(Shape) {
       left,
       height,
       width,
-      angle,
-      digit,
-      ratioLtoS = .5,
-      ratioLtoW = 2
+      pattern = '##:##:##',
+      value = '12:34:56',
+      digitHeight = 20,
+      digitWidth = 10,
+      digitDistance = 2.5,
+      displayAngle = 12,
+      segmentWidth = 2.5,
+      segmentDistance = 0.2,
+      segmentCount = SegmentDisplay.SevenSegment,
+      cornerType = SegmentDisplay.RoundedCorner,
+      colorOn = 'rgb(233, 93, 15)',
+      colorOff = 'rgb(75, 30, 5)'
     } = this.state;
 
-    var seven = new Seven({
-      height,
-      angle,
-      ratioLtoW,
-      ratioLtoS,
-      digit
-    });
+    var display = new SegmentDisplay(width, height);
+    display.pattern = pattern;
+    display.displayAngle = displayAngle;
+    display.digitHeight = digitHeight;
+    display.digitWidth = digitWidth;
+    display.digitDistance = digitDistance;
+    display.segmentWidth = segmentWidth;
+    display.segmentDistance = segmentDistance;
+    display.segmentCount = segmentCount;
+    display.cornerType = cornerType;
+    display.colorOn = colorOn;
+    display.colorOff = colorOff;
+
+    display.setValue(String(value));
 
     context.translate(left, top);
+    context.beginPath();
 
-    for (let segment of seven.segments) {  //Access the segments A-G
-      //'on' specifies if the segment is used for the 'digit' specified
-      if (segment.on) {
-        context.beginPath();
-
-        let { x, y } = segment.points[0];
-        context.moveTo(x, y);
-
-        for (let p of segment.points.slice(1)) {
-          let { x, y } = p;
-          context.lineTo(x, y);
-        }
-
-        context.stroke();
-        context.fill();
-      } else {
-        context.beginPath();
-
-        let { x, y } = segment.points[0];
-        context.moveTo(x, y);
-
-        for (let p of segment.points.slice(1)) {
-          let { x, y } = p;
-          context.lineTo(x, y);
-        }
-
-        context.lineTo(x, y);
-
-        context.stroke();
-        context.closePath();
-      }
-    }
-  }
-
-  get digit() {
-    return this.getState('digit')
-  }
-
-  set digit(digit) {
-    this.setState('digit', Number(digit) % 12)
+    display.draw(context);
   }
 
   get nature() {

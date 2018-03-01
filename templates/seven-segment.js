@@ -16,9 +16,18 @@ export default {
       height: 300,
       fillStyle: 'black',
       strokeStyle: 'darkgray',
-      angle: 10,
-      ratioLtoW: 4.5,
-      ratioLtoS: 32
+      pattern: '##:##:##',
+      value: '12:34:56',
+      digitHeight: 20,
+      digitWidth: 10,
+      digitDistance: 2.5,
+      displayAngle: 12,
+      segmentWidth: 2.5,
+      segmentDistance: 0.2,
+      segmentCount: 7,
+      cornerType: 0,
+      colorOn: 'rgb(233, 93, 15)',
+      colorOff: 'rgb(75, 30, 5)'
     }
   }
 }
