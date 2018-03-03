@@ -42,8 +42,20 @@ const NATURE = {
   }]
 };
 
+const RECT_BUTTON_COLORS = {
+  black: ['black', 'black'],
+  white: ['white', 'white'],
+  gray: ['gray', 'gray'],
+  yellow: ['yellow', 'yellow'],
+  green: ['green', 'green'],
+  red: ['#fe494b', 'red'],
+  cyan: ['cyan', 'cyan']
+};
+
 const WIDTH = 449;
 const HEIGHT = 53;
+
+const RECT_BUTTON_EDGE = 5;
 
 export default class Indicator extends RectPath(Shape) {
 
@@ -58,6 +70,81 @@ export default class Indicator extends RectPath(Shape) {
 
   dispose() {
     super.dispose();
+  }
+
+  rectButtonContains(x, y, WRATE, HRATE) {
+    var left = 290 * WRATE;
+    var top = 15 * HRATE;
+    var width = 52 * WRATE;
+    var height = 24 * HRATE;
+
+    var extend = RECT_BUTTON_EDGE;
+
+    return (x < Math.max(left + width, left) + extend && x > Math.min(left + width, left) - extend
+      && y < Math.max(top + height, top) + extend && y > Math.min(top + height, top) - extend);
+  }
+
+  mfcButtonContains(x, y, WRATE, HRATE) {
+    var rx = 7 * WRATE;
+    var ry = 7 * HRATE;
+
+    var cx = 96 * WRATE;
+    var cy = 27 * HRATE;
+    var normx = (x - cx) / (rx * 2 - 0.5);
+    var normy = (y - cy) / (ry * 2 - 0.5);
+
+    if ((normx * normx + normy * normy) < 0.25) {
+      return 'M';
+    }
+
+    cx = 113 * WRATE;
+    cy = 16 * HRATE;
+    normx = (x - cx) / (rx * 2 - 0.5);
+    normy = (y - cy) / (ry * 2 - 0.5);
+
+    if ((normx * normx + normy * normy) < 0.25) {
+      return 'F';
+    }
+
+    cx = 113 * WRATE;
+    cy = 38 * HRATE;
+    normx = (x - cx) / (rx * 2 - 0.5);
+    normy = (y - cy) / (ry * 2 - 0.5);
+
+    if ((normx * normx + normy * normy) < 0.25) {
+      return 'C';
+    }
+  }
+
+  onclick(e, hint) {
+    var {
+      left,
+      top,
+      width,
+      height
+    } = this.bounds;
+
+    var WRATE = width / WIDTH;
+    var HRATE = height / HEIGHT;
+
+    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
+
+    if (this.rectButtonContains(x - left, y - top, WRATE, HRATE)) {
+      this.setState('buttonColor', ['black', 'white', 'gray', 'yellow', 'red', 'green', 'cyan'][Math.floor(Math.random() * 10) % 7]);
+    } else {
+      switch (this.mfcButtonContains(x - left, y - top, WRATE, HRATE)) {
+        case 'M':
+          console.log('clicked', 'M');
+          break;
+        case 'F':
+          console.log('clicked', 'F');
+          break;
+        case 'C':
+          console.log('clicked', 'C');
+          break;
+        default:
+      }
+    }
   }
 
   get displays() {
@@ -95,7 +182,7 @@ export default class Indicator extends RectPath(Shape) {
     });
   }
 
-  _drawButton(context, WRATE, HRATE, color) {
+  _drawRectButton(context, WRATE, HRATE, colors) {
     var w = 52 * WRATE;
     var h = 24 * HRATE;
     var r = Math.min(7 * WRATE, 7 * HRATE);
@@ -113,11 +200,11 @@ export default class Indicator extends RectPath(Shape) {
 
     // context.fillStyle = '#fe494b';
     // context.strokeStyle = 'red';
-    context.fillStyle = color;
-    context.strokeStyle = color;
+    context.fillStyle = colors[0];
+    context.strokeStyle = colors[1];
     context.fill();
     context.globalAlpha = 0.8;
-    context.lineWidth = 5;
+    context.lineWidth = RECT_BUTTON_EDGE;
     context.stroke();
     context.globalAlpha = 1;
   }
@@ -185,7 +272,7 @@ export default class Indicator extends RectPath(Shape) {
 
     context.restore();
     context.translate(290 * WRATE, 15 * HRATE);
-    this._drawButton(context, WRATE, HRATE, color);
+    this._drawRectButton(context, WRATE, HRATE, RECT_BUTTON_COLORS[color]);
 
     context.beginPath();
   }
