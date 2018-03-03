@@ -12,8 +12,8 @@ export default {
       type: 'indicator',
       left: 10,
       top: 10,
-      width: 150,
-      height: 30,
+      width: 449,
+      height: 53,
       fillStyle: 'black',
       strokeStyle: 'darkgray'
     }

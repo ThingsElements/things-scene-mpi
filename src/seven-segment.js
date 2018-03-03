@@ -127,9 +127,10 @@ export default class SevenSegment extends RectPath(Shape) {
     display.setValue(String(value));
 
     context.translate(left, top);
-    context.beginPath();
 
     display.draw(context);
+
+    context.beginPath();
   }
 
   get nature() {
