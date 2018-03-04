@@ -44,7 +44,7 @@ const NATURE = {
         value: 'green'
       }, {
         display: 'RED',
-        value: 'red'
+        value: '#fd0000'
       }, {
         display: 'CYAN',
         value: 'cyan'
@@ -53,20 +53,10 @@ const NATURE = {
   }]
 };
 
-const RECT_BUTTON_COLORS = {
-  black: ['black', 'black'],
-  white: ['white', 'white'],
-  gray: ['gray', 'gray'],
-  yellow: ['yellow', 'yellow'],
-  green: ['green', 'green'],
-  red: ['#fe494b', 'red'],
-  cyan: ['cyan', 'cyan']
-};
-
 const WIDTH = 449;
 const HEIGHT = 53;
 
-const RECT_BUTTON_EDGE = 5;
+const RECT_BUTTON_EDGE = 3;
 
 export default class Indicator extends RectPath(Shape) {
 
@@ -193,7 +183,7 @@ export default class Indicator extends RectPath(Shape) {
     });
   }
 
-  _drawRectButton(context, WRATE, HRATE, colors) {
+  _drawRectButton(context, WRATE, HRATE, color) {
     var w = 52 * WRATE;
     var h = 24 * HRATE;
     var r = Math.min(7 * WRATE, 7 * HRATE);
@@ -207,16 +197,26 @@ export default class Indicator extends RectPath(Shape) {
     context.arcTo(w, h, 0, h, r);
     context.arcTo(0, h, 0, 0, r);
     context.arcTo(0, 0, w, 0, r);
-    context.closePath();
 
-    // context.fillStyle = '#fe494b';
-    // context.strokeStyle = 'red';
-    context.fillStyle = colors[0];
-    context.strokeStyle = colors[1];
-    context.fill();
-    context.globalAlpha = 0.8;
+    context.globalAlpha = 1;
+    context.fillStyle = color;
+    context.strokeStyle = color;
     context.lineWidth = RECT_BUTTON_EDGE;
+    context.fill();
     context.stroke();
+    context.strokeStyle = 'black';
+    context.globalAlpha = 0.3;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(RECT_BUTTON_EDGE - 2, h - r);
+    context.arcTo(RECT_BUTTON_EDGE - 2, RECT_BUTTON_EDGE - 2, w - r, 0, r);
+    context.lineTo(w - r, RECT_BUTTON_EDGE - 2);
+    context.strokeStyle = 'white';
+    context.globalAlpha = 0.6;
+    context.lineWidth = 1;
+    context.stroke();
+
     context.globalAlpha = 1;
   }
 
@@ -283,7 +283,7 @@ export default class Indicator extends RectPath(Shape) {
 
     context.restore();
     context.translate(290 * WRATE, 15 * HRATE);
-    this._drawRectButton(context, WRATE, HRATE, RECT_BUTTON_COLORS[color]);
+    this._drawRectButton(context, WRATE, HRATE, color);
 
     context.beginPath();
   }
