@@ -209,12 +209,23 @@ export default class Indicator extends RectPath(Shape) {
     context.stroke();
 
     context.beginPath();
-    context.moveTo(RECT_BUTTON_EDGE - 2, h - r);
+    context.moveTo(RECT_BUTTON_EDGE - 2, h - r - 1);
     context.arcTo(RECT_BUTTON_EDGE - 2, RECT_BUTTON_EDGE - 2, w - r, 0, r);
-    context.lineTo(w - r, RECT_BUTTON_EDGE - 2);
+    context.lineTo(w - r - 1, RECT_BUTTON_EDGE - 2);
     context.strokeStyle = 'white';
-    context.globalAlpha = 0.6;
-    context.lineWidth = 1;
+    context.globalAlpha = 0.5;
+    context.lineWidth = 2;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(w - r + 1, RECT_BUTTON_EDGE - 2);
+    context.arcTo(w - 1, RECT_BUTTON_EDGE - 2, w - 1, h, r);
+    context.arcTo(w - 1, h - 1, RECT_BUTTON_EDGE - 2, h, r);
+    context.arcTo(RECT_BUTTON_EDGE - 2, h - 1, RECT_BUTTON_EDGE - 2, 0, r);
+
+    context.strokeStyle = 'white';
+    context.globalAlpha = 0.3;
+    context.lineWidth = 2;
     context.stroke();
 
     context.globalAlpha = 1;
@@ -286,6 +297,12 @@ export default class Indicator extends RectPath(Shape) {
     this._drawRectButton(context, WRATE, HRATE, color);
 
     context.beginPath();
+  }
+
+  onchangeData(after, before) {
+    super.onchangeData(after, before);
+
+    onmessage(this, after.data);
   }
 
   get hasTextProperty() {

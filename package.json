@@ -1,6 +1,6 @@
 {
   "name": "@things-elements/things-scene-mpi",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "src/index.js",
   "things-shell": true,
   "things-shell-editor": "",
@@ -11,6 +11,7 @@
     "@things-elements/things-scene-mqtt": "^0.1.15"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.2.44"
+    "@hatiolab/things-scene": "^2.2.44",
+    "@things-elements/things-scene-random": "^0.1.2"
   }
 }
