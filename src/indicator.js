@@ -2,6 +2,17 @@ import { Component, RectPath, Shape } from '@hatiolab/things-scene';
 import SegmentDisplay from './segment-display';
 import IMAGE from './mpi-image';
 
+import {
+  onMouseDownMButton,
+  onMouseDownFButton,
+  onMouseDownCButton,
+  onMouseDownBigButton
+} from './indicator-user-action';
+
+import {
+  onmessage
+} from './indicator-on-message';
+
 const NATURE = {
   mutable: false,
   resizable: true,
@@ -116,7 +127,7 @@ export default class Indicator extends RectPath(Shape) {
     }
   }
 
-  onclick(e, hint) {
+  onmousedown(e, hint) {
     var {
       left,
       top,
@@ -130,17 +141,17 @@ export default class Indicator extends RectPath(Shape) {
     var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
 
     if (this.rectButtonContains(x - left, y - top, WRATE, HRATE)) {
-      this.setState('buttonColor', ['black', 'white', 'gray', 'yellow', 'red', 'green', 'cyan'][Math.floor(Math.random() * 10) % 7]);
+      onMouseDownBigButton(this);
     } else {
       switch (this.mfcButtonContains(x - left, y - top, WRATE, HRATE)) {
         case 'M':
-          console.log('clicked', 'M');
+          onMouseDownMButton(this);
           break;
         case 'F':
-          console.log('clicked', 'F');
+          onMouseDownFButton(this);
           break;
         case 'C':
-          console.log('clicked', 'C');
+          onMouseDownCButton(this);
           break;
         default:
       }
@@ -172,7 +183,7 @@ export default class Indicator extends RectPath(Shape) {
       display.segmentWidth = 1.8;
       display.segmentDistance = 0.2;
       display.segmentCount = SegmentDisplay.SevenSegment;
-      display.cornerType = SegmentDisplay.RoundedCorner;
+      display.cornerType = SegmentDisplay.SymmetricCorner;
       display.colorOn = idx ? '#fd0000' : '#007dfe';
       display.colorOff = '#2c2c2c';
 
