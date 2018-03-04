@@ -188,7 +188,7 @@ export default class Indicator extends RectPath(Shape) {
     var h = 24 * HRATE;
     var r = Math.min(7 * WRATE, 7 * HRATE);
     var edge = Math.floor(r / 2);
-    var highlight = Math.ceil(r / 3);
+    var highlight = Math.floor(r / 5);
 
     if (w < 2 * r) r = w / 2;
     if (h < 2 * r) r = h / 2;
@@ -211,22 +211,22 @@ export default class Indicator extends RectPath(Shape) {
     context.stroke();
 
     context.beginPath();
-    context.moveTo(highlight, h - r - highlight);
-    context.arcTo(highlight, highlight, w - r, 0, r);
-    context.lineTo(w - r - highlight, highlight);
+    context.moveTo(highlight, h - r);
+    context.arcTo(highlight, highlight, r, highlight, r - highlight);
+    context.lineTo(w - r, highlight);
     context.strokeStyle = 'white';
-    context.globalAlpha = 0.5;
+    context.globalAlpha = 0.6;
     context.lineWidth = highlight;
     context.stroke();
 
     context.beginPath();
-    context.moveTo(w - r - highlight, highlight);
-    context.arcTo(w - highlight, highlight + highlight, w, h, r);
-    context.arcTo(w - highlight, h - highlight, highlight, h, r);
-    context.arcTo(highlight, h - highlight, highlight + highlight, 0, r);
+    context.moveTo(w - r, highlight);
+    context.arcTo(w - highlight, highlight, w - highlight, r, r - highlight);
+    context.arcTo(w - highlight, h - highlight, w - r, h - highlight, r - highlight);
+    context.arcTo(highlight, h - highlight, highlight, h - r, r - highlight);
 
     context.strokeStyle = 'white';
-    context.globalAlpha = 0.3;
+    context.globalAlpha = 0.4;
     context.lineWidth = highlight;
     context.stroke();
 
