@@ -187,6 +187,8 @@ export default class Indicator extends RectPath(Shape) {
     var w = 52 * WRATE;
     var h = 24 * HRATE;
     var r = Math.min(7 * WRATE, 7 * HRATE);
+    var edge = Math.floor(r / 2);
+    var highlight = Math.ceil(r / 3);
 
     if (w < 2 * r) r = w / 2;
     if (h < 2 * r) r = h / 2;
@@ -201,7 +203,7 @@ export default class Indicator extends RectPath(Shape) {
     context.globalAlpha = 1;
     context.fillStyle = color;
     context.strokeStyle = color;
-    context.lineWidth = RECT_BUTTON_EDGE;
+    context.lineWidth = edge;
     context.fill();
     context.stroke();
     context.strokeStyle = 'black';
@@ -209,23 +211,23 @@ export default class Indicator extends RectPath(Shape) {
     context.stroke();
 
     context.beginPath();
-    context.moveTo(RECT_BUTTON_EDGE - 2, h - r - 1);
-    context.arcTo(RECT_BUTTON_EDGE - 2, RECT_BUTTON_EDGE - 2, w - r, 0, r);
-    context.lineTo(w - r - 1, RECT_BUTTON_EDGE - 2);
+    context.moveTo(highlight, h - r - highlight);
+    context.arcTo(highlight, highlight, w - r, 0, r);
+    context.lineTo(w - r - highlight, highlight);
     context.strokeStyle = 'white';
     context.globalAlpha = 0.5;
-    context.lineWidth = 2;
+    context.lineWidth = highlight;
     context.stroke();
 
     context.beginPath();
-    context.moveTo(w - r + 1, RECT_BUTTON_EDGE - 2);
-    context.arcTo(w - 1, RECT_BUTTON_EDGE - 2, w - 1, h, r);
-    context.arcTo(w - 1, h - 1, RECT_BUTTON_EDGE - 2, h, r);
-    context.arcTo(RECT_BUTTON_EDGE - 2, h - 1, RECT_BUTTON_EDGE - 2, 0, r);
+    context.moveTo(w - r - highlight, highlight);
+    context.arcTo(w - highlight, highlight + highlight, w, h, r);
+    context.arcTo(w - highlight, h - highlight, highlight, h, r);
+    context.arcTo(highlight, h - highlight, highlight + highlight, 0, r);
 
     context.strokeStyle = 'white';
     context.globalAlpha = 0.3;
-    context.lineWidth = 2;
+    context.lineWidth = highlight;
     context.stroke();
 
     context.globalAlpha = 1;
