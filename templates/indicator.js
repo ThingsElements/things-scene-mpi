@@ -1,9 +1,11 @@
+import icon from '../assets/no-image.png';
+
 export default {
   type: 'indicator',
-  description: 'Multi-purpose Indicator Component.',
+  description: 'multi-purpose indicator',
   group: 'IoT',
   /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
-  icon: '..',
+  icon,
   model: {
     type: 'indicator',
     left: 10,

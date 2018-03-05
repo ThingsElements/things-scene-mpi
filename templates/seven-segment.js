@@ -1,9 +1,11 @@
+import icon from '../assets/no-image.png';
+
 export default {
   type: 'seven-segment',
-  description: 'Electric Seven Segment Emulation Component',
+  description: 'electric seven segment emulator',
   group: 'IoT',
   /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
-  icon: '..',
+  icon,
   model: {
     type: 'seven-segment',
     left: 10,
