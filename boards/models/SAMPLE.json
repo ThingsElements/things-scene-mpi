@@ -3,12 +3,12 @@
   "height": 600,
   "type": "model-layer",
   "translate": {
-    "x": 176.66666666666674,
-    "y": 0
+    "x": 0,
+    "y": 262
   },
   "scale": {
-    "x": 1.5633333333333332,
-    "y": 1.5633333333333332
+    "x": 0.69,
+    "y": 0.69
   },
   "components": [
     {
@@ -21,8 +21,10 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "port": 10001,
-      "broker": "localhost"
+      "port": 1884,
+      "broker": "localhost",
+      "path": "/mqtt",
+      "topic": "aaa"
     },
     {
       "type": "indicator",
