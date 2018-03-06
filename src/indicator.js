@@ -1,6 +1,6 @@
 import { Component, RectPath, Shape } from '@hatiolab/things-scene';
 import SegmentDisplay from './segment-display';
-import IMAGE from './mpi-image';
+import IMAGE from '../assets/indicator.png';
 
 import {
   onMouseDownMButton,
