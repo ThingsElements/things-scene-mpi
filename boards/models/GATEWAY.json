@@ -3,7 +3,7 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 118.8148148148149,
+    "x": 44.814814814814895,
     "y": 0
   },
   "scale": {
@@ -169,14 +169,7 @@
       "rotation": 0,
       "locked": false,
       "id": "gateway-02",
-      "mappings": [
-        {
-          "rule": "value",
-          "accessor": "body.ind_on",
-          "target": "[id]",
-          "property": "data"
-        }
-      ],
+      "mappings": [],
       "publisher": "publisher-2",
       "components": [
         {
