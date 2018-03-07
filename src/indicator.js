@@ -19,11 +19,11 @@ const NATURE = {
   rotatable: true,
   properties: [{
     type: 'string',
-    label: 'org_box_qty',
+    label: 'org-box-qty',
     name: 'org_box_qty'
   }, {
     type: 'string',
-    label: 'org_ea_qty',
+    label: 'org-ea-qty',
     name: 'org_ea_qty'
   }, {
     type: 'select',

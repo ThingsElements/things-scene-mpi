@@ -1,0 +1,669 @@
+{
+  "width": 1640,
+  "height": 1080,
+  "type": "model-layer",
+  "translate": {
+    "x": 118.8148148148149,
+    "y": 0
+  },
+  "scale": {
+    "x": 0.8685185185185185,
+    "y": 0.8685185185185185
+  },
+  "left": 0,
+  "top": 0,
+  "components": [
+    {
+      "type": "gateway",
+      "xx": 0,
+      "left": 1080.9229672744555,
+      "top": 142.81523409072514,
+      "width": 501.4765100671141,
+      "height": 746.6560551167072,
+      "fillStyle": "cyan",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "locked": false,
+      "id": "gateway-03",
+      "mappings": [
+        {
+          "rule": "value",
+          "accessor": "body.ind_on",
+          "target": "[id]",
+          "property": "data"
+        }
+      ],
+      "publisher": "publisher-3",
+      "components": [
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 66.59900813684146,
+          "width": 449.00000000000045,
+          "height": 52.99999999999994,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi021"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 132.2869275999288,
+          "width": 449.00000000000045,
+          "height": 53.00000000000006,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi022"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 197.97484706301634,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi023"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 263.66276652610327,
+          "width": 449.00000000000045,
+          "height": 52.999999999999886,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi024"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 329.35068598919054,
+          "width": 449.00000000000045,
+          "height": 52.99999999999994,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi025"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 395.03860545227786,
+          "width": 449.00000000000045,
+          "height": 52.99999999999977,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi026"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 460.726524915365,
+          "width": 449.00000000000045,
+          "height": 52.99999999999949,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi027"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 526.4144443784521,
+          "width": 449.00000000000045,
+          "height": 52.99999999999932,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi028"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 592.1023638415388,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi029"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 30.39932885906046,
+          "top": 658.5453168616737,
+          "width": 449.00000000000045,
+          "height": 53,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi030"
+        }
+      ]
+    },
+    {
+      "type": "gateway",
+      "xx": 0,
+      "left": 563.8759874086836,
+      "top": 142.81523409072514,
+      "width": 501.4765100671141,
+      "height": 746.656055116707,
+      "fillStyle": "cyan",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "locked": false,
+      "id": "gateway-02",
+      "mappings": [
+        {
+          "rule": "value",
+          "accessor": "body.ind_on",
+          "target": "[id]",
+          "property": "data"
+        }
+      ],
+      "publisher": "publisher-2",
+      "components": [
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 64.18290075429115,
+          "width": 449.00000000000045,
+          "height": 52.999999999999915,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi011"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 129.87082021737848,
+          "width": 449.00000000000045,
+          "height": 53.00000000000006,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi012"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 195.55873968046603,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi013"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 261.24665914355296,
+          "width": 449.00000000000045,
+          "height": 52.999999999999886,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi014"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 326.93457860664023,
+          "width": 449.00000000000045,
+          "height": 52.999999999999886,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi015"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 392.62249806972756,
+          "width": 449.00000000000045,
+          "height": 52.99999999999977,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi016"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 458.3104175328147,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi017"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 523.9983369959018,
+          "width": 449.00000000000045,
+          "height": 52.99999999999932,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi018"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 589.6862564589885,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi019"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235112,
+          "top": 657.3372631703985,
+          "width": 449.00000000000045,
+          "height": 53,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi020"
+        }
+      ]
+    },
+    {
+      "type": "gateway",
+      "xx": 0,
+      "left": 46.829007542911654,
+      "top": 142.81523409072514,
+      "width": 501.4765100671141,
+      "height": 746.656055116707,
+      "fillStyle": "cyan",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "locked": false,
+      "mappings": [],
+      "id": "gateway-01",
+      "publisher": "publisher-1",
+      "components": [
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 61.76679337174062,
+          "width": 449.00000000000045,
+          "height": 52.999999999999915,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi001"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 127.45471283482797,
+          "width": 449.00000000000045,
+          "height": 53.00000000000003,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi002"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 193.1426322979155,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi003"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 258.8305517610024,
+          "width": 449.00000000000045,
+          "height": 52.999999999999886,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi004"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 324.5184712240897,
+          "width": 449.00000000000045,
+          "height": 52.999999999999886,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi005"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 390.2063906871771,
+          "width": 449.00000000000045,
+          "height": 52.9999999999996,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi006"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 455.89431015026406,
+          "width": 449.00000000000045,
+          "height": 52.99999999999977,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi007"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 521.5822296133513,
+          "width": 449.00000000000045,
+          "height": 52.99999999999932,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi008"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.775167785235,
+          "top": 587.270149076438,
+          "width": 449.00000000000045,
+          "height": 52.999999999999545,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi009"
+        },
+        {
+          "type": "indicator",
+          "xx": 0,
+          "left": 26.77516778523497,
+          "top": 657.3372631703985,
+          "width": 449.00000000000045,
+          "height": 53,
+          "fillStyle": "black",
+          "strokeStyle": "darkgray",
+          "rotation": 0,
+          "id": "mpi010"
+        }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 343.4334082225495,
+      "top": 36.03671060079225,
+      "width": 69.32885906040275,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "id": "subscriber-1",
+      "role": "subscriber",
+      "clientId": "GATEWAY-1",
+      "mappings": [
+        {
+          "rule": "value",
+          "target": "#gateway-01",
+          "property": "data",
+          "accessor": "data"
+        },
+        {
+          "rule": "eval",
+          "target": "#logger",
+          "property": "data",
+          "param": "console.log('logger', value);\nreturn JSON.stringify(value, null, 2);"
+        }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 460.6146162762408,
+      "top": 36.03671060079225,
+      "width": 69.32885906040269,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "role": "publisher",
+      "id": "publisher-1",
+      "clientId": "GATEWAY-1"
+    },
+    {
+      "type": "random",
+      "xx": 0,
+      "left": 1097.0373921380644,
+      "top": 23.956173688040593,
+      "width": 100,
+      "height": 100.00000000000006,
+      "hidden": true,
+      "dataFormat": "json",
+      "format": "d10",
+      "period": 5000,
+      "count": 1,
+      "rotation": 0,
+      "mappings": [
+        {
+          "rule": "eval",
+          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value + 20),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
+          "target": "#gateway-03",
+          "property": "data",
+          "accessor": "0"
+        }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 863.8598474549589,
+      "top": 36.03671060079225,
+      "width": 69.32885906040269,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "id": "subscriber-2",
+      "role": "subscriber",
+      "clientId": "GATEWAY-2",
+      "mappings": [
+        {
+          "rule": "value",
+          "target": "#gateway-02",
+          "property": "data"
+        }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 981.0410555086502,
+      "top": 36.03671060079225,
+      "width": 69.32885906040258,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "role": "publisher",
+      "id": "publisher-2",
+      "clientId": "GATEWAY-2"
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 1373.9238133398203,
+      "top": 36.03671060079225,
+      "width": 69.32885906040269,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "id": "subscriber-3",
+      "clientId": "GATEWAY-3",
+      "role": "subscriber",
+      "mappings": [
+        {
+          "rule": "value",
+          "target": "#gateway-03",
+          "property": "data"
+        }
+      ]
+    },
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 1491.1050213935116,
+      "top": 36.03671060079225,
+      "width": 69.32885906040269,
+      "height": 69.32885906040258,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "localhost",
+      "port": 1884,
+      "path": "/mqtt",
+      "topic": "mps",
+      "qos": 1,
+      "role": "publisher",
+      "id": "publisher-3",
+      "clientId": "GATEWAY-3"
+    },
+    {
+      "type": "random",
+      "xx": 0,
+      "left": 61.941443310771206,
+      "top": 23.956173688040593,
+      "width": 100,
+      "height": 100.00000000000006,
+      "hidden": true,
+      "dataFormat": "json",
+      "format": "d10",
+      "period": 5000,
+      "count": 1,
+      "rotation": 0,
+      "mappings": [
+        {
+          "rule": "eval",
+          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"000\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
+          "target": "#gateway-01",
+          "property": "data"
+        }
+      ]
+    },
+    {
+      "type": "random",
+      "xx": 0,
+      "left": 576.610952905654,
+      "top": 23.956173688040593,
+      "width": 100.00000000000034,
+      "height": 100.00000000000006,
+      "hidden": true,
+      "dataFormat": "json",
+      "format": "d10",
+      "period": 5000,
+      "count": 1,
+      "rotation": 0,
+      "mappings": [
+        {
+          "rule": "eval",
+          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value + 10),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
+          "target": "#gateway-02",
+          "property": "data",
+          "accessor": "0"
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": 48.25581216122475,
+      "top": 902.9119634187068,
+      "width": 1536.8110052148895,
+      "height": 95.78909240373002,
+      "fillStyle": "#fff",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "id": "logger"
+    }
+  ]
+}
