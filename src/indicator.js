@@ -19,12 +19,12 @@ const NATURE = {
   rotatable: true,
   properties: [{
     type: 'string',
-    label: 'value1',
-    name: 'value1'
+    label: 'org_box_qty',
+    name: 'org_box_qty'
   }, {
     type: 'string',
-    label: 'value2',
-    name: 'value2'
+    label: 'org_ea_qty',
+    name: 'org_ea_qty'
   }, {
     type: 'select',
     label: 'button color',
@@ -44,7 +44,7 @@ const NATURE = {
         value: 'green'
       }, {
         display: 'RED',
-        value: '#fd0000'
+        value: 'red'
       }, {
         display: 'CYAN',
         value: 'cyan'
@@ -158,11 +158,11 @@ export default class Indicator extends RectPath(Shape) {
     var HRATE = height / HEIGHT;
 
     var {
-      value1 = '000',
-      value2 = '000'
+      org_box_qty = '000',
+      org_ea_qty = '000'
     } = this.state;
 
-    return [value1, value2].map((value, idx) => {
+    return [org_box_qty, org_ea_qty].map((value, idx) => {
       var display = new SegmentDisplay(63 * WRATE, 28 * HRATE);
 
       display.pattern = '###';

@@ -1,0 +1,102 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "type": "model-layer",
+  "translate": {
+    "x": 0,
+    "y": 62.875
+  },
+  "scale": {
+    "x": 0.5854166666666667,
+    "y": 0.5854166666666667
+  },
+  "components": [
+    {
+      "type": "mqtt",
+      "xx": 0,
+      "left": 120.81850533807827,
+      "top": 107.36654804270466,
+      "width": 99.99999999999989,
+      "height": 100,
+      "hidden": true,
+      "dataFormat": "json",
+      "rotation": 0,
+      "broker": "192.168.0.248",
+      "port": 15675,
+      "path": "/ws",
+      "user": "hatiolab",
+      "password": "hatiolab",
+      "topic": "mpi001",
+      "qos": 1,
+      "clientId": "MPI001",
+      "mappings": [
+        {
+          "rule": "value",
+          "target": "[id]",
+          "property": "data",
+          "accessor": "body.ind_on"
+        },
+        {
+          "rule": "value",
+          "accessor": "body.ind_on[0].id",
+          "target": "#logger",
+          "property": "text"
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": 404.3772241992883,
+      "top": 114.19928825622779,
+      "width": 1419.9644128113878,
+      "height": 100,
+      "fillStyle": "#fff",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "id": "logger",
+      "fontSize": 40
+    },
+    {
+      "type": "indicator",
+      "xx": 0,
+      "left": 373.36476868327406,
+      "top": 277.770462633452,
+      "width": 449,
+      "height": 53,
+      "fillStyle": "black",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "id": "mpi001"
+    },
+    {
+      "type": "indicator",
+      "xx": 0,
+      "left": 373.36476868327406,
+      "top": 381.96975088967974,
+      "width": 449,
+      "height": 53,
+      "fillStyle": "black",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "id": "mpi002"
+    },
+    {
+      "type": "indicator",
+      "xx": 0,
+      "left": 373.36476868327406,
+      "top": 486.16903914590745,
+      "width": 449,
+      "height": 53.00000000000006,
+      "fillStyle": "black",
+      "strokeStyle": "darkgray",
+      "rotation": 0,
+      "id": "mpi003"
+    }
+  ]
+}
