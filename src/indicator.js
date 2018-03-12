@@ -271,7 +271,7 @@ export default class Indicator extends RectPath(Shape) {
       height
     } = this.bounds;
 
-    var color = this.state.buttonColor || 'cyan';
+    var color = this.state.buttonColor || 'black';
 
     var WRATE = width / WIDTH;
     var HRATE = height / HEIGHT;

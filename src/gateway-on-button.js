@@ -15,6 +15,9 @@ export const buttons = [{
 }, {
   icon: error,
   handler: onclickError
+}, {
+  icon: status,
+  handler: onclickTimesync
 }];
 
 function onclickStart(gateway) {
@@ -27,16 +30,21 @@ function onclickStart(gateway) {
 
   if (publisher) {
     publisher.data = {
+      properties: gateway.generateMessageProperties(),
       body: {
-        ind_on: indicators.map(indicator => {
-          return {
-            id: indicator.get('id'),
-            org_box_qty: '000',
-            org_ea_qty: '000',
-            color: 'black'
-          }
-        })
+        action: 'GW_INIT_REQ',
+        id: gateway.id
       }
+      // body: {
+      //   ind_on: indicators.map(indicator => {
+      //     return {
+      //       id: indicator.get('id'),
+      //       org_box_qty: '000',
+      //       org_ea_qty: '000',
+      //       color: 'black'
+      //     }
+      //   })
+      // }
     };
 
     publisher.data = null;
@@ -51,22 +59,22 @@ function onclickStop(gateway) {
 
   console.log('onclickStop', indicators, publisher);
 
-  if (publisher) {
-    publisher.data = {
-      body: {
-        ind_on: indicators.map(indicator => {
-          return {
-            id: indicator.get('id'),
-            org_box_qty: '000',
-            org_ea_qty: '000',
-            color: 'black'
-          }
-        })
-      }
-    };
+  // if (publisher) {
+  //   publisher.data = {
+  //     body: {
+  //       ind_on: indicators.map(indicator => {
+  //         return {
+  //           id: indicator.get('id'),
+  //           org_box_qty: '000',
+  //           org_ea_qty: '000',
+  //           color: 'black'
+  //         }
+  //       })
+  //     }
+  //   };
 
-    publisher.data = null;
-  }
+  //   publisher.data = null;
+  // }
 }
 
 function onclickStatus(gateway) {
@@ -75,4 +83,31 @@ function onclickStatus(gateway) {
 
 function onclickError(gateway) {
   console.log('onclickError', gateway.indicators);
+
+  gateway.publisher.data = {
+    properties: gateway.generateMessageProperties(),
+    body: {
+      action: "ERR_RPT",
+      error: {
+        hw_gb: "gw",
+        id: gateway.id,
+        message: "Error Report Test"
+      }
+    }
+  }
+
+  gateway.publisher.data = null;
+}
+
+function onclickTimesync(gateway) {
+  console.log('onclickTimesync', gateway.indicators);
+
+  gateway.publisher.data = {
+    properties: gateway.generateMessageProperties(),
+    body: {
+      action: "TIMESYNC_REQ"
+    }
+  }
+
+  gateway.publisher.data = null;
 }

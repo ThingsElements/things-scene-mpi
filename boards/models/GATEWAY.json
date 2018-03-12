@@ -3,12 +3,12 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 44.814814814814895,
-    "y": 0
+    "x": 0,
+    "y": 1.8536585365853853
   },
   "scale": {
-    "x": 0.8685185185185185,
-    "y": 0.8685185185185185
+    "x": 0.8280487804878048,
+    "y": 0.8280487804878048
   },
   "left": 0,
   "top": 0,
@@ -182,7 +182,8 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "mpi011"
+          "id": "mpi011",
+          "mappings": []
         },
         {
           "type": "indicator",
@@ -441,20 +442,20 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "site01/reg001/zone001/gw001",
       "qos": 1,
       "id": "subscriber-1",
       "role": "subscriber",
-      "clientId": "GATEWAY-1",
+      "clientId": "site01/reg001/zone001/gw001",
       "mappings": [
         {
           "rule": "value",
           "target": "#gateway-01",
           "property": "data",
-          "accessor": "data"
+          "accessor": ""
         },
         {
           "rule": "eval",
@@ -462,7 +463,9 @@
           "property": "data",
           "param": "console.log('logger', value);\nreturn JSON.stringify(value, null, 2);"
         }
-      ]
+      ],
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "mqtt",
@@ -474,14 +477,16 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "mps_server",
       "qos": 1,
       "role": "publisher",
       "id": "publisher-1",
-      "clientId": "GATEWAY-1"
+      "clientId": "GATEWAY-1",
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "random",
@@ -496,15 +501,7 @@
       "period": 5000,
       "count": 1,
       "rotation": 0,
-      "mappings": [
-        {
-          "rule": "eval",
-          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value + 20),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
-          "target": "#gateway-03",
-          "property": "data",
-          "accessor": "0"
-        }
-      ]
+      "mappings": []
     },
     {
       "type": "mqtt",
@@ -516,21 +513,23 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "site01/reg001/zone001/gw002",
       "qos": 1,
       "id": "subscriber-2",
       "role": "subscriber",
-      "clientId": "GATEWAY-2",
+      "clientId": "site01/reg001/zone001/gw002",
       "mappings": [
         {
           "rule": "value",
           "target": "#gateway-02",
           "property": "data"
         }
-      ]
+      ],
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "mqtt",
@@ -542,14 +541,16 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "mps_server",
       "qos": 1,
       "role": "publisher",
       "id": "publisher-2",
-      "clientId": "GATEWAY-2"
+      "clientId": "GATEWAY-2",
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "mqtt",
@@ -561,13 +562,13 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "site01/reg001/zone001/gw003",
       "qos": 1,
       "id": "subscriber-3",
-      "clientId": "GATEWAY-3",
+      "clientId": "site01/reg001/zone001/gw003",
       "role": "subscriber",
       "mappings": [
         {
@@ -575,7 +576,9 @@
           "target": "#gateway-03",
           "property": "data"
         }
-      ]
+      ],
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "mqtt",
@@ -587,14 +590,16 @@
       "hidden": true,
       "dataFormat": "json",
       "rotation": 0,
-      "broker": "localhost",
-      "port": 1884,
-      "path": "/mqtt",
-      "topic": "mps",
+      "broker": "192.168.0.65",
+      "port": 15675,
+      "path": "/ws",
+      "topic": "mps_server",
       "qos": 1,
       "role": "publisher",
       "id": "publisher-3",
-      "clientId": "GATEWAY-3"
+      "clientId": "GATEWAY-3",
+      "user": "hatiolab",
+      "password": "hatiolab"
     },
     {
       "type": "random",
@@ -612,9 +617,10 @@
       "mappings": [
         {
           "rule": "eval",
-          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"000\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
-          "target": "#gateway-01",
-          "property": "data"
+          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  properties: {\n  \tid: ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>\n        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)\n      ),\n    time: Date.now(),\n    dest_id: \"gateway-01\",\n    source_id: \"mps_server\",\n    is_reply: false\n  },\n  body: {\n    action: \"IND_ON_REQ\",\n    ind_on: [{\n      id: 'mpi' + f(value + 0),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
+          "property": "data",
+          "target": "(self)",
+          "accessor": "data"
         }
       ]
     },
@@ -634,8 +640,8 @@
       "mappings": [
         {
           "rule": "eval",
-          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  body: {\n    ind_on: [{\n      id: 'mpi' + f(value + 10),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
-          "target": "#gateway-02",
+          "param": "const colors = ['red', 'blue', 'green', 'yellow', 'cyan'];\n\nfunction f(v) { return (\"00\" + v).slice(-3); }\nfunction color() { return colors[Math.floor(Math.random() * 5)] }\n\nreturn {\n  properties: {\n  \tid: ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>\n        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)\n      ),\n    time: Date.now(),\n    dest_id: \"gateway-02\",\n    source_id: \"mps_server\",\n    is_reply: false\n  },\n  body: {\n    action: \"IND_ON_REQ\",\n    ind_on: [{\n      id: 'mpi' + f(value + 10),\n      org_box_qty: f(Math.floor(Math.random() * 1000)),\n      org_ea_qty: f(Math.floor(Math.random() * 1000)),\n      color: color()\n    }]\n  }\n};",
+          "target": "(self)",
           "property": "data",
           "accessor": "0"
         }

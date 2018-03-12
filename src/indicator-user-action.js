@@ -11,5 +11,13 @@ export function onMouseDownCButton(indicator) {
 }
 
 export function onMouseDownBigButton(indicator) {
+  console.log('onMouseDownBigButton');
+  indicator.parent.passIndicatorsMessage({
+    "action": "IND_STATUS_RPT",
+    "ind_status": {
+      "id": indicator.id,
+      "version": "Things-shell MPI Simulator 0.1.0"
+    }
+  });
   indicator.setState('buttonColor', ['black', 'white', 'gray', 'yellow', 'red', 'green', 'cyan'][Math.floor(Math.random() * 10) % 7]);
 }

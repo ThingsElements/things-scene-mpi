@@ -70,6 +70,38 @@ export default class Gateway extends Container {
     });
   }
 
+  passIndicatorsMessage(indicatorMessage) {
+    if (!indicatorMessage) this.publisher.data.properties = this.generateMessageProperties();
+    else this.publisher.data = {
+      "properties": this.generateMessageProperties(),
+      "body": indicatorMessage
+    }
+  }
+
+  generateMessageProperties() {
+    return {
+      "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      ),
+      "time": Date.now(),
+      "dest_id": "mps_server",
+      "source_id": this.id,
+      "is_reply": false
+    };
+  }
+
+  generateReplyMessage(messageId, sourceId) {
+    return {
+      "properties": {
+        "id": messageId,
+        "time": Date.now(),
+        "dest_id": sourceId,
+        "source_id": this.id,
+        "is_reply": true
+      }
+    }
+  }
+
   _draw(context) {
     var {
       left,
