@@ -22,6 +22,36 @@ const NATURE = {
     type: 'string',
     name: 'publisher',
     label: 'publisher'
+  }, {
+    type: 'string',
+    name: 'timer',
+    label: 'timer'
+  }, {
+    type: 'select',
+    label: 'power-flag',
+    name: 'power_flag',
+    property: {
+      options: [{
+        display: 'TRUE',
+        value: 'true'
+      }, {
+        display: 'FALSE',
+        value: 'false'
+      }]
+    }
+  }, {
+    type: 'select',
+    label: 'boot-flag',
+    name: 'boot_flag',
+    property: {
+      options: [{
+        display: 'TRUE',
+        value: 'true'
+      }, {
+        display: 'FALSE',
+        value: 'false'
+      }]
+    }
   }]
 };
 
@@ -52,6 +82,8 @@ export default class Gateway extends Container {
   }
 
   dispose() {
+    this.timerOff();
+    delete this.time;
     super.dispose();
   }
 
@@ -71,11 +103,13 @@ export default class Gateway extends Container {
   }
 
   passIndicatorsMessage(indicatorMessage) {
-    if (!indicatorMessage) this.publisher.data.properties = this.generateMessageProperties();
-    else this.publisher.data = {
+    if (!this.state.power_flag || !this.state.boot_flag) return;
+
+    this.publisher.data = {
       "properties": this.generateMessageProperties(),
       "body": indicatorMessage
     }
+    console.log("sent " + (indicatorMessage.action ? indicatorMessage.action : "indicator message"), this.publisher.data);
   }
 
   generateMessageProperties() {
@@ -85,21 +119,36 @@ export default class Gateway extends Container {
       ),
       "time": Date.now(),
       "dest_id": "mps_server",
-      "source_id": this.id,
+      "source_id": this.model.id,
       "is_reply": false
     };
   }
 
-  generateReplyMessage(messageId, sourceId) {
-    return {
+  generateReplyMessage(messageId, destId, action, body) {
+    var msg = {
       "properties": {
         "id": messageId,
         "time": Date.now(),
-        "dest_id": sourceId,
-        "source_id": this.id,
+        "dest_id": destId,
+        "source_id": this.model.id,
         "is_reply": true
       }
+    };
+    if(action == "IND_ON_REQ") {
+      msg.body = {
+        action: "IND_ON_REQ_ACK",
+        biz_type: body.biz_type,
+        action_type: body.action_type,
+        ind_on: body.ind_on.map( ind => {
+          return {
+            id: ind.id,
+            biz_id: ind.biz_id
+          }
+        })
+      }
     }
+
+    return msg;
   }
 
   _draw(context) {
@@ -140,6 +189,104 @@ export default class Gateway extends Container {
     if (this.state.publisher) {
       return this.findById(this.state.publisher)
     }
+  }
+
+  get timer() {
+    if (this.state.timer) {
+      return this.findById(this.state.timer);
+    } else {
+      return false;
+    }
+  }
+
+  boot() {
+    if (this.state.boot_flag == "true") return;
+    var {
+      indicators,
+      publisher
+    } = this;
+
+    console.log('onclickStart');
+
+    // 2.1 indicator ready
+    this.indicators.forEach(indicator => {
+      // 2.2 indicater ID 점등
+      indicator.setState('org_box_qty', String(("00" + Math.floor(Math.random() * 1000)).substr(-3)));//indicator.model.id.substr(0, 3)));
+      indicator.setState('org_ea_qty', String(("00" + Math.floor(Math.random() * 1000)).substr(-3)));//indicator.model.id.substr(-3)));
+      indicator.setState('buttonColor', String("white"));
+    });
+
+    // 2.3 gateway ready
+    this.setState('power_flag', 'true');
+
+    // 2.4 boot request to M/W
+    if (publisher) {
+      publisher.data = {
+        properties: this.generateMessageProperties(),
+        body: {
+          action: 'GW_INIT_REQ',
+          id: this.model.id
+        }
+      };
+    }
+    console.log("sent GW_INIT_REQ", publisher.data);
+  }
+
+  off(){
+    if (this.state.power_flag == "false") return;
+
+    this.timerOff();
+
+    this.setState('power_flag', String('false'));
+    this.setState('boot_flag', String('false'));
+
+
+    this.indicators.forEach(indicator => {
+      indicator.setState('boot_flag', String('false'));
+      indicator.lightOff();
+    });
+    console.log("turned off " + this.model.id);
+    
+  }
+
+  setTimer(timestamp) {
+    if(!this.timer) return;
+    var digitalClock = ("0" + new Date(timestamp).getHours()).substr(-2) + ":" +
+      ("0" + new Date(timestamp).getMinutes()).substr(-2) + ":" +
+      ("0" + new Date(timestamp).getSeconds()).substr(-2);
+    this.timer.value = digitalClock;
+  }
+
+  timerOn() {
+    if (this.timer) {
+      console.log(this.model.id, "timer on");
+      
+      this.time = setInterval(() => {
+        if (!this.root || !this.timer) { this.timerOff(); delete this.time; return; }
+        let hms = this.timer.value.split(':').map(t => {
+          return parseInt(t);
+        });
+        hms[2]++;
+        if (hms[2] >= 60) {
+          hms[2] = 0;
+          hms[1]++;
+          if (hms[1] >= 60) {
+            hms[1] = 0;
+            hms[0]++;
+            if (hms[0] >= 24) {
+              hms[0] = 0;
+            }
+          }
+        }
+        this.timer.value = ("0" + hms[0]).substr(-2) + ":" + ("0" + hms[1]).substr(-2) + ":" + ("0" + hms[2]).substr(-2);
+      }, 1000);
+    }
+  }
+
+  timerOff() {
+    console.log(this.model.id, "timer off");
+    
+    clearInterval(this.time);
   }
 
   onchangeData(after, before) {

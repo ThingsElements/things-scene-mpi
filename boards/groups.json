@@ -3,5 +3,27 @@
     "name": "DEFAULT-GROUP",
     "description": "",
     "type": "group"
+  },
+  "PLAYGROUP": {
+    "name": "PLAYGROUP",
+    "description": "",
+    "type": "play-group",
+    "plays": [
+      "MPI-01",
+      "SAMPLE",
+      "MQTT",
+      "GATEWAY",
+      "GATEWAY TEST",
+      "MPI-NEW-SLIM",
+      "MPI-100"
+    ]
+  },
+  "MPI": {
+    "name": "MPI",
+    "description": "",
+    "type": "play-group",
+    "plays": [
+      "GATEWAY"
+    ]
   }
 }

@@ -21,86 +21,60 @@ export const buttons = [{
 }];
 
 function onclickStart(gateway) {
-  var {
-    indicators,
-    publisher
-  } = gateway;
-
-  console.log('onclickStart', indicators, publisher);
-
-  if (publisher) {
-    publisher.data = {
-      properties: gateway.generateMessageProperties(),
-      body: {
-        action: 'GW_INIT_REQ',
-        id: gateway.id
-      }
-      // body: {
-      //   ind_on: indicators.map(indicator => {
-      //     return {
-      //       id: indicator.get('id'),
-      //       org_box_qty: '000',
-      //       org_ea_qty: '000',
-      //       color: 'black'
-      //     }
-      //   })
-      // }
-    };
-
-    publisher.data = null;
-  }
+  // Boot
+  // 전원 ON
+  console.log('onclickStart');
+  gateway.boot();
 }
 
 function onclickStop(gateway) {
-  var {
-    indicators,
-    publisher
-  } = gateway;
-
-  console.log('onclickStop', indicators, publisher);
-
-  // if (publisher) {
-  //   publisher.data = {
-  //     body: {
-  //       ind_on: indicators.map(indicator => {
-  //         return {
-  //           id: indicator.get('id'),
-  //           org_box_qty: '000',
-  //           org_ea_qty: '000',
-  //           color: 'black'
-  //         }
-  //       })
-  //     }
-  //   };
-
-  //   publisher.data = null;
-  // }
+  // 전원 OFF
+  console.log('onclickStop');
+  gateway.off();
 }
 
 function onclickStatus(gateway) {
-  console.log('onclickStatus', gateway.indicators);
+  console.log('onclickStatus');
+  if (gateway.state.power_flag == "false") return;
+
+  ////////random indicator////////
+  var indicator = gateway.indicators[Math.floor(Math.random() * gateway.indicators.length)];
+
+  gateway.publisher.data = {
+    properties: gateway.generateMessageProperties(),
+    body: {
+      action: "IND_STATUS_RPT",
+      id: indicator.model.id,
+      version: indicator.version,
+      status: (Math.random() > 0.5) ? "ok" : "offline" // random status
+      // status: (indicator.state.boot_flag == "true") ? "ok" : "offline"
+    }
+  }
+  console.log("sent IND_STATUS_RPT", gateway.publisher.data);
+  ////////////////////////////////
 }
 
 function onclickError(gateway) {
-  console.log('onclickError', gateway.indicators);
+  console.log('onclickError');
+  if (gateway.state.power_flag == "false") return;
+
+  let hwgb = Math.random();
 
   gateway.publisher.data = {
     properties: gateway.generateMessageProperties(),
     body: {
       action: "ERR_RPT",
-      error: {
-        hw_gb: "gw",
-        id: gateway.id,
-        message: "Error Report Test"
-      }
+      hw_gb: (hwgb > 0.5) ? "gw" : "ind",
+      id: (hwgb > 0.5) ? gateway.model.id : gateway.indicators[Math.floor(hwgb * gateway.indicators.length * 2)].model.id,
+      message: ["ERR001", "ERR002", "ERR003", "ERR004", "ERR005", "ERR006"][Math.floor(Math.random() * 6)]
     }
   }
-
-  gateway.publisher.data = null;
+  console.log("sent ERR_RPT", gateway.publisher.data);
 }
 
 function onclickTimesync(gateway) {
-  console.log('onclickTimesync', gateway.indicators);
+  console.log('onclickTimesync');
+  if (gateway.state.power_flag == "false") return;
 
   gateway.publisher.data = {
     properties: gateway.generateMessageProperties(),
@@ -108,6 +82,5 @@ function onclickTimesync(gateway) {
       action: "TIMESYNC_REQ"
     }
   }
-
-  gateway.publisher.data = null;
+  console.log("sent TIMESYNC_REQ", gateway.publisher.data);
 }

@@ -1,24 +1,21 @@
 {
-  "width": 1640,
+  "width": 1920,
   "height": 1080,
   "type": "model-layer",
   "translate": {
     "x": 0,
-    "y": 85.84146341463412
+    "y": 137.125
   },
   "scale": {
-    "x": 0.651219512195122,
-    "y": 0.651219512195122
+    "x": 0.55625,
+    "y": 0.55625
   },
-  "left": 0,
-  "top": 0,
-  "mappings": [],
   "components": [
     {
       "type": "gateway",
       "xx": 0,
-      "left": 1086.5675665775914,
-      "top": 28.041714926962072,
+      "left": 1101.5675665775914,
+      "top": 43.04171492696207,
       "width": 501.4765100671141,
       "height": 746.6560551167071,
       "fillStyle": "cyan",
@@ -50,7 +47,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319485",
           "boot_flag": "true",
           "class": "indicator"
         },
@@ -64,7 +61,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319489",
           "boot_flag": "true",
           "class": "indicator",
           "org_box_qty": ""
@@ -79,7 +76,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319493",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -94,7 +91,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319497",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -109,7 +106,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319517",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -124,7 +121,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319521",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -139,7 +136,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319525",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -154,7 +151,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319529",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -169,7 +166,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319501",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
@@ -184,42 +181,18 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "319505",
           "boot_flag": "true",
           "class": "indicator",
           "org_ea_qty": ""
-        },
-        {
-          "type": "seven-segment",
-          "xx": 0,
-          "left": 249.15317247074313,
-          "top": 5.644450346946911,
-          "width": 177.6601671309195,
-          "height": 31.977715877437333,
-          "fillStyle": "black",
-          "strokeStyle": "darkgray",
-          "pattern": "##:##:##",
-          "value": "00:00:00",
-          "digitHeight": 20,
-          "digitWidth": 10,
-          "digitDistance": 2.5,
-          "displayAngle": 12,
-          "segmentWidth": 2.5,
-          "segmentDistance": 0.2,
-          "segmentCount": 7,
-          "cornerType": 0,
-          "colorOn": "rgb(0, 0, 0)",
-          "colorOff": "rgb(0, 0, 0, 0.15)",
-          "rotation": 0,
-          "id": "clock3"
         }
       ]
     },
     {
       "type": "gateway",
       "xx": 0,
-      "left": 569.5205867118195,
-      "top": 28.041714926962072,
+      "left": 584.5205867118195,
+      "top": 43.04171492696207,
       "width": 501.4765100671141,
       "height": 746.6560551167069,
       "fillStyle": "cyan",
@@ -244,7 +217,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316339",
           "mappings": [],
           "boot_flag": "false",
           "class": "indicator"
@@ -259,7 +232,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316341",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -273,7 +246,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316343",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -287,7 +260,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316344",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -301,7 +274,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316544",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -315,7 +288,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316545",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -329,7 +302,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316546",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -343,7 +316,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316548",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -357,7 +330,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316549",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -371,7 +344,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316550",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -404,8 +377,8 @@
     {
       "type": "gateway",
       "xx": 0,
-      "left": 52.47360684604757,
-      "top": 28.041714926962072,
+      "left": 67.47360684604757,
+      "top": 43.04171492696207,
       "width": 501.4765100671141,
       "height": 746.6560551167069,
       "fillStyle": "cyan",
@@ -430,7 +403,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "312992",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -444,7 +417,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316345",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -458,7 +431,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316349",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -472,7 +445,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316350",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -486,7 +459,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316353",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -500,7 +473,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316357",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -514,7 +487,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316358",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -528,7 +501,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316499",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -542,7 +515,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316501",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -556,7 +529,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316504",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -589,8 +562,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 209.84455804833362,
-      "top": -112.60440438178614,
+      "left": 224.84455804833362,
+      "top": -97.60440438178614,
       "width": 69.32885906040275,
       "height": 69.32885906040258,
       "hidden": true,
@@ -626,8 +599,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 327.02576610202493,
-      "top": -112.60440438178614,
+      "left": 342.02576610202493,
+      "top": -97.60440438178614,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -647,8 +620,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 730.270997280743,
-      "top": -112.60440438178614,
+      "left": 745.270997280743,
+      "top": -97.60440438178614,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -682,8 +655,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 847.4522053344343,
-      "top": -112.60440438178614,
+      "left": 862.4522053344343,
+      "top": -97.60440438178614,
       "width": 69.32885906040258,
       "height": 69.32885906040258,
       "hidden": true,
@@ -703,8 +676,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1240.3349631656044,
-      "top": -112.60440438178614,
+      "left": 1255.3349631656044,
+      "top": -97.60440438178614,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -738,8 +711,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1357.5161712192958,
-      "top": -112.60440438178614,
+      "left": 1372.5161712192958,
+      "top": -97.60440438178614,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -759,8 +732,8 @@
     {
       "type": "rect",
       "xx": 0,
-      "left": 51.79494608846596,
-      "top": 788.4952416480862,
+      "left": 66.79494608846596,
+      "top": 803.4952416480862,
       "width": 501.56794425087094,
       "height": 270.1393728222997,
       "fillStyle": "#fff",
@@ -780,8 +753,8 @@
     {
       "type": "rect",
       "xx": 0,
-      "left": 569.2165488759223,
-      "top": 788.4952416480862,
+      "left": 584.2165488759223,
+      "top": 803.4952416480862,
       "width": 501.56794425087094,
       "height": 270.1393728222997,
       "fillStyle": "#fff",
@@ -801,8 +774,8 @@
     {
       "type": "rect",
       "xx": 0,
-      "left": 1086.6381516633783,
-      "top": 788.4952416480862,
+      "left": 1101.6381516633783,
+      "top": 803.4952416480862,
       "width": 501.56794425087105,
       "height": 270.1393728222997,
       "fillStyle": "#fff",

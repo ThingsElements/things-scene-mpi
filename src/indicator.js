@@ -26,17 +26,15 @@ const NATURE = {
     label: 'org-ea-qty',
     name: 'org_ea_qty'
   }, {
+    type: 'string',
+    label: 'led-type',
+    name: 'led-type'
+  }, {
     type: 'select',
     label: 'button color',
     name: 'buttonColor',
     property: {
       options: [{
-        display: 'GRAY',
-        value: 'gray'
-      }, {
-        display: 'YELLOW',
-        value: 'yellow'
-      }, {
         display: 'WHITE',
         value: 'white'
       }, {
@@ -46,8 +44,21 @@ const NATURE = {
         display: 'RED',
         value: 'red'
       }, {
-        display: 'CYAN',
-        value: 'cyan'
+        display: 'BLUE',
+        value: 'blue'
+      }]
+    }
+  }, {
+    type: 'select',
+    label: 'boot-flag',
+    name: 'boot_flag',
+    property: {
+      options: [{
+        display: 'TRUE',
+        value: 'true'
+      }, {
+        display: 'FALSE',
+        value: 'false'
       }]
     }
   }]
@@ -69,8 +80,39 @@ export default class Indicator extends RectPath(Shape) {
     return Indicator._image;
   }
 
+  get colors() {
+    return {
+      "R": "red",
+      "G": "green",
+      "B": "blue",
+      "W": "white"
+    }
+  }
+
+  get ledTypes() {
+    return {
+      "BLINK": "blink", // 깜박
+      "ALWAYS": "always"  // 항상
+    }
+  }
+
+  get tasks() {
+    return {
+      "PICK": "pick",
+      "STOCK": "stock"
+    }
+  }
+
   dispose() {
     super.dispose();
+  }
+
+  lightOff() {
+    this.setState("org_box_qty", "");
+    this.setState("org_ea_qty", "");
+    this.setState("buttonColor", "black");
+
+    this.lit = false;
   }
 
   rectButtonContains(x, y, WRATE, HRATE) {
@@ -158,8 +200,8 @@ export default class Indicator extends RectPath(Shape) {
     var HRATE = height / HEIGHT;
 
     var {
-      org_box_qty = '000',
-      org_ea_qty = '000'
+      org_box_qty = '',
+      org_ea_qty = ''
     } = this.state;
 
     return [org_box_qty, org_ea_qty].map((value, idx) => {
