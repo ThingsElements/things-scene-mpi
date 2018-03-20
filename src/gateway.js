@@ -132,6 +132,9 @@ export default class Gateway extends Container {
         "dest_id": destId,
         "source_id": this.model.id,
         "is_reply": true
+      },
+      "body": {
+        "action": action + "_ACK"
       }
     };
     if(action == "IND_ON_REQ") {

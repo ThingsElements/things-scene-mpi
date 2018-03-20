@@ -1,5 +1,8 @@
 export function onmessage(gateway, message) {
-  if (gateway.state.power_flag == "false") return;
+  if (gateway.state.power_flag == "false") {
+    
+    return;
+  }
   if (!message.properties.is_reply) {
     console.log("received " + (message.body.action ? message.body.action : "unknown action"), message);
 
@@ -45,7 +48,7 @@ export function onmessage(gateway, message) {
 
           component.setState('boot_flag', String("true"));
           
-          if(!component.model.id){
+          if(!component.model.id && !gateway.findById(indConf[i].id)){
             component.model.id = indConf[i].id;
             gateway.root.indexMap[component.model.id] = component;
             i++;
@@ -249,6 +252,6 @@ export function onmessage(gateway, message) {
         console.log("unknown message", message);
     }
   } else {
-
+    console.log("server reply: ", message);
   }
 }
