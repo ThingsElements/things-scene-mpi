@@ -210,7 +210,7 @@ export default class Gateway extends Container {
         properties: this.generateMessageProperties(),
         body: {
           action: 'GW_INIT_REQ',
-          id: this.model.id
+          id: this.model.id.split('/')[this.model.id.split('/').length - 1]
         }
       };
     }

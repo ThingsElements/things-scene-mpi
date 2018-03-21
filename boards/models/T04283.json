@@ -3,28 +3,27 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 0,
-    "y": 35.75
+    "x": 73.79759014873989,
+    "y": 96.110594959615
   },
   "scale": {
-    "x": 0.5791666666666667,
-    "y": 0.5791666666666667
+    "x": 0.47916666666666674,
+    "y": 0.47916666666666674
   },
-  "mappings": [],
   "components": [
     {
       "type": "gateway",
       "xx": 0,
-      "left": 177.9713488968734,
-      "top": 13.154246250023334,
-      "width": 362.83185840707944,
-      "height": 1047.76047857187,
+      "left": 169.4239396332729,
+      "top": 13.382198719508324,
+      "width": 362.8318584070794,
+      "height": 1047.7604785718713,
       "fillStyle": "cyan",
       "strokeStyle": "darkgray",
       "rotation": 0,
       "locked": false,
       "mappings": [],
-      "id": "T042/T04280/1/GW60",
+      "id": "T042/T04283/1/GW72",
       "publisher": "publisher-1",
       "power_flag": "true",
       "boot_flag": "false",
@@ -386,9 +385,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 260.01906336801153,
-      "top": -100.99607187706303,
-      "width": 69.32885906040275,
+      "left": 251.47165410441096,
+      "top": -100.76811940757804,
+      "width": 69.3288590604028,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -396,15 +395,15 @@
       "broker": "192.168.0.248",
       "port": 15675,
       "path": "/ws",
-      "topic": "T042/T04280/1/GW60",
+      "topic": "T042/T04283/1/GW72",
       "qos": 1,
       "id": "subscriber-1",
       "role": "subscriber",
-      "clientId": "T042/T04280/1/GW60",
+      "clientId": "T042/T04283/1/GW72",
       "mappings": [
         {
           "rule": "value",
-          "target": "#T042/T04280/1/GW60",
+          "target": "#T042/T04283/1/GW72",
           "property": "data",
           "accessor": ""
         }
@@ -416,8 +415,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 377.20027142170284,
-      "top": -100.99607187706303,
+      "left": 368.65286215810227,
+      "top": -100.76811940757804,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -437,8 +436,8 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 673.4101043703324,
-      "top": -100.99607187706303,
+      "left": 664.8626951067318,
+      "top": -100.76811940757804,
       "width": 69.32885906040269,
       "height": 69.32885906040258,
       "hidden": true,
@@ -447,15 +446,15 @@
       "broker": "192.168.0.248",
       "port": 15675,
       "path": "/ws",
-      "topic": "T042/T04280/2/GW61",
+      "topic": "T042/T04283/2/GW73",
       "qos": 1,
       "id": "subscriber-2",
       "role": "subscriber",
-      "clientId": "T042/T04280/2/GW61",
+      "clientId": "T042/T04283/2/GW73",
       "mappings": [
         {
           "rule": "value",
-          "target": "#T042/T04280/2/GW61",
+          "target": "#T042/T04283/2/GW73",
           "property": "data"
         }
       ],
@@ -465,9 +464,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 790.5913124240237,
-      "top": -100.99607187706303,
-      "width": 69.32885906040258,
+      "left": 782.0439031604232,
+      "top": -100.76811940757804,
+      "width": 69.32885906040246,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -486,9 +485,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1070.9961941489992,
-      "top": -100.996071877063,
-      "width": 69.32885906040269,
+      "left": 1062.4487848853996,
+      "top": -100.76811940757801,
+      "width": 69.32885906040246,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -496,15 +495,15 @@
       "broker": "192.168.0.248",
       "port": 15675,
       "path": "/ws",
-      "topic": "T042/T04280/3/GW62",
+      "topic": "T042/T04283/3/GW74",
       "qos": 1,
       "id": "subscriber-3",
-      "clientId": "T042/T04280/3/GW62",
+      "clientId": "T042/T04283/3/GW74",
       "role": "subscriber",
       "mappings": [
         {
           "rule": "value",
-          "target": "#T042/T04280/3/GW62",
+          "target": "#T042/T04283/3/GW74",
           "property": "data"
         }
       ],
@@ -514,9 +513,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1188.1774022026905,
-      "top": -100.996071877063,
-      "width": 69.32885906040269,
+      "left": 1179.6299929390907,
+      "top": -100.76811940757801,
+      "width": 69.32885906040292,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -535,9 +534,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1475.5537162728929,
-      "top": -100.996071877063,
-      "width": 69.32885906040269,
+      "left": 1467.0063070092933,
+      "top": -100.76811940757801,
+      "width": 69.32885906040246,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -545,14 +544,14 @@
       "broker": "192.168.0.248",
       "port": 15675,
       "path": "/ws",
-      "topic": "T042/T04280/4/GW63",
+      "topic": "T042/T04283/4/GW75",
       "qos": 1,
-      "clientId": "T042/T04280/4/GW63",
+      "clientId": "T042/T04283/4/GW75",
       "role": "subscriber",
       "mappings": [
         {
           "rule": "value",
-          "target": "#T042/T04280/4/GW63",
+          "target": "#T042/T04283/4/GW75",
           "property": "data"
         }
       ],
@@ -563,9 +562,9 @@
     {
       "type": "mqtt",
       "xx": 0,
-      "left": 1592.7349243265842,
-      "top": -100.996071877063,
-      "width": 69.32885906040269,
+      "left": 1584.1875150629844,
+      "top": -100.76811940757801,
+      "width": 69.32885906040292,
       "height": 69.32885906040258,
       "hidden": true,
       "dataFormat": "json",
@@ -584,10 +583,10 @@
     {
       "type": "gateway",
       "xx": 0,
-      "left": 581.3194314927437,
-      "top": 13.154246250023334,
+      "left": 572.7720222291431,
+      "top": 13.382198719508324,
       "width": 362.8318584070794,
-      "height": 1047.76047857187,
+      "height": 1047.7604785718713,
       "fillStyle": "cyan",
       "strokeStyle": "darkgray",
       "rotation": 0,
@@ -598,7 +597,7 @@
       "boot_flag": "false",
       "class": "gateway",
       "timer": "clock2",
-      "id": "T042/T04280/2/GW61",
+      "id": "T042/T04283/2/GW73",
       "components": [
         {
           "type": "indicator",
@@ -955,10 +954,10 @@
     {
       "type": "gateway",
       "xx": 0,
-      "left": 984.6675140886139,
-      "top": 13.154246250023334,
-      "width": 362.8318584070794,
-      "height": 1047.76047857187,
+      "left": 976.1201048250133,
+      "top": 13.382198719508324,
+      "width": 362.8318584070802,
+      "height": 1047.7604785718713,
       "fillStyle": "cyan",
       "strokeStyle": "darkgray",
       "rotation": 0,
@@ -969,7 +968,7 @@
       "boot_flag": "false",
       "class": "gateway",
       "timer": "clock3",
-      "id": "T042/T04280/3/GW62",
+      "id": "T042/T04283/3/GW74",
       "components": [
         {
           "type": "indicator",
@@ -1326,10 +1325,10 @@
     {
       "type": "gateway",
       "xx": 0,
-      "left": 1388.015596684484,
-      "top": 13.154246250023334,
+      "left": 1379.4681874208845,
+      "top": 13.382198719508324,
       "width": 362.8318584070794,
-      "height": 1047.76047857187,
+      "height": 1047.7604785718713,
       "fillStyle": "cyan",
       "strokeStyle": "darkgray",
       "rotation": 0,
@@ -1340,7 +1339,7 @@
       "boot_flag": "false",
       "class": "gateway",
       "timer": "clock4",
-      "id": "T042/T04280/4/GW63",
+      "id": "T042/T04283/4/GW75",
       "components": [
         {
           "type": "indicator",
@@ -1692,61 +1691,6 @@
           "boot_flag": "false",
           "class": "indicator"
         }
-      ]
-    },
-    {
-      "type": "boot-button",
-      "xx": 0,
-      "left": 10.674157303370748,
-      "top": 9.550561797752778,
-      "width": 140.3370786516855,
-      "height": 140.33707865168543,
-      "fillStyle": "transparent",
-      "strokeStyle": "transparent",
-      "rotation": 0,
-      "publisher": "publisher-1",
-      "id": "bootAll",
-      "data": [
-        "T042/T04280/1/GW60",
-        "T042/T04280/2/GW61",
-        "T042/T04280/3/GW62",
-        "T042/T04280/4/GW63",
-        "T042/T04281/1/GW64",
-        "T042/T04281/2/GW65",
-        "T042/T04281/3/GW66",
-        "T042/T04281/4/GW67",
-        "T042/T04282/1/GW68",
-        "T042/T04282/2/GW69",
-        "T042/T04282/3/GW70",
-        "T042/T04282/4/GW71",
-        "T042/T04283/1/GW72",
-        "T042/T04283/2/GW73",
-        "T042/T04283/3/GW74",
-        "T042/T04283/4/GW75",
-        "T042/T04284/1/GW76",
-        "T042/T04284/2/GW77",
-        "T042/T04284/3/GW78",
-        "T042/T04284/4/GW79",
-        "T042/T04285/1/GW80",
-        "T042/T04285/2/GW81",
-        "T042/T04285/3/GW82",
-        "T042/T04285/4/GW83",
-        "T042/T04286/1/GW84",
-        "T042/T04286/2/GW85",
-        "T042/T04286/3/GW86",
-        "T042/T04286/4/GW87",
-        "T042/T04287/1/GW88",
-        "T042/T04287/2/GW89",
-        "T042/T04287/3/GW90",
-        "T042/T04287/4/GW91",
-        "T042/T04288/1/GW92",
-        "T042/T04288/2/GW93",
-        "T042/T04288/3/GW94",
-        "T042/T04288/4/GW95",
-        "T042/T04289/1/GW96",
-        "T042/T04289/2/GW97",
-        "T042/T04289/3/GW98",
-        "T042/T04289/4/GW99"
       ]
     }
   ]

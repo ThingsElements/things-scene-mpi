@@ -23,7 +23,7 @@ export function onmessage(gateway, message) {
           "properties": gateway.generateMessageProperties(),
           "body": {
             "action": "GW_INIT_RPT",
-            "id": gateway.model.id,
+            "id": gateway.model.id.split('/')[gateway.model.id.split('/').length - 1],
             "version": gateway.version,
             // "dummy": "dummy"
           }
@@ -188,7 +188,7 @@ export function onmessage(gateway, message) {
           "properties": gateway.generateMessageProperties(),
           "body": {
             "action": "GW_DEP_RES",
-            "id": gateway.model.id,
+            "id": gateway.model.id.split('/')[gateway.model.id.split('/').length - 1],
             "result": isUpdated,
             "version": gateway.version,
             "time": Date.now()
