@@ -23,7 +23,8 @@
     "description": "",
     "type": "play-group",
     "plays": [
-      "GATEWAY"
+      "T04280",
+      "T04281"
     ]
   }
 }

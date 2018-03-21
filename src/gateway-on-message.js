@@ -1,8 +1,5 @@
 export function onmessage(gateway, message) {
-  if (gateway.state.power_flag == "false") {
-    
-    return;
-  }
+  if (gateway.state.power_flag == "false") return;
   if (!message.properties.is_reply) {
     console.log("received " + (message.body.action ? message.body.action : "unknown action"), message);
 
@@ -33,26 +30,25 @@ export function onmessage(gateway, message) {
         };
         console.log("sent GW_INIT_RPT", gateway.publisher.data);
 
-        gateway.setState('boot_flag', String("true")); // gw on        
+        gateway.setState('boot_flag', String("true")); // gw on
 
         // 2.7 indicator 초기화 요청
-        let indConf = message && message.body && message.body.ind_conf;
+        var indicators = message && message.body && message.body.ind_conf;
 
+        var i = 0;
         // ?? indicator 초기화 모두 완료 ??
-        let i = 0;
-        gateway.indicators.forEach(indicator => {
+        gateway.indicators.forEach((indicator, idx) => {
           // 2.8 indicator 초기화
-          // let component = gateway.findById(indicator.id);
           let component = indicator;
-          if (!component) return;
 
-          component.setState('boot_flag', String("true"));
-          
-          if(!component.model.id && !gateway.findById(indConf[i].id)){
-            component.model.id = indConf[i].id;
+          // 시뮬레이션 편의용: MPI 아이디 서버에서 부여
+          if(!component.model.id && !gateway.findById(indicators[i].id)){
+            component.model.id = indicators[i].id;
             gateway.root.indexMap[component.model.id] = component;
             i++;
           }
+
+          component.setState('boot_flag', String("true"));
 
           if (!component.version) component.version = message.body.ind_version;
 
@@ -115,10 +111,12 @@ export function onmessage(gateway, message) {
           indicator.lightOff();
         });
 
-        let indOn = message && message.body && message.body.ind_on;
+        
+
+        var indicators = message && message.body && message.body.ind_on;
 
         // 3.5 인디케이터 점등
-        indOn && indOn.forEach(indicator => {
+        indicators && indicators.forEach(indicator => {
           let component = gateway.findById(indicator.id);
           if (!component) return;
           if (component.state.boot_flag == "false") return;
@@ -174,7 +172,7 @@ export function onmessage(gateway, message) {
         // - 인디케이터 펌웨어 업데이트 프로토콜은 따로임
 
         //firmware update//
-        let isUpdated = false;
+        var isUpdated = false;
         let random = Math.random();
         if (random > 0.5) {
           message.body.ind_url;

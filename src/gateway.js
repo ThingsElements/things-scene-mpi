@@ -27,31 +27,13 @@ const NATURE = {
     name: 'timer',
     label: 'timer'
   }, {
-    type: 'select',
+    type: 'string',
     label: 'power-flag',
     name: 'power_flag',
-    property: {
-      options: [{
-        display: 'TRUE',
-        value: 'true'
-      }, {
-        display: 'FALSE',
-        value: 'false'
-      }]
-    }
   }, {
-    type: 'select',
+    type: 'string',
     label: 'boot-flag',
     name: 'boot_flag',
-    property: {
-      options: [{
-        display: 'TRUE',
-        value: 'true'
-      }, {
-        display: 'FALSE',
-        value: 'false'
-      }]
-    }
   }]
 };
 

@@ -4,11 +4,11 @@
   "type": "model-layer",
   "translate": {
     "x": 0,
-    "y": 85.84146341463412
+    "y": 82.8780487804878
   },
   "scale": {
-    "x": 0.651219512195122,
-    "y": 0.651219512195122
+    "x": 0.6567073170731708,
+    "y": 0.6567073170731708
   },
   "left": 0,
   "top": 0,
@@ -35,8 +35,8 @@
         }
       ],
       "publisher": "publisher-3",
-      "power_flag": "true",
-      "boot_flag": "true",
+      "power_flag": "false",
+      "boot_flag": "false",
       "class": "gateway",
       "timer": "clock3",
       "components": [
@@ -50,8 +50,8 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
+          "id": "319485",
+          "boot_flag": "false",
           "class": "indicator"
         },
         {
@@ -64,10 +64,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_box_qty": ""
+          "id": "319489",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -79,10 +78,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319493",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -94,10 +92,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319497",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -109,10 +106,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319517",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -124,10 +120,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319521",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -139,10 +134,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319525",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -154,10 +148,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319529",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -169,10 +162,9 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319501",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "indicator",
@@ -184,15 +176,14 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
-          "boot_flag": "true",
-          "class": "indicator",
-          "org_ea_qty": ""
+          "id": "319505",
+          "boot_flag": "false",
+          "class": "indicator"
         },
         {
           "type": "seven-segment",
           "xx": 0,
-          "left": 249.15317247074313,
+          "left": 247.86140278174003,
           "top": 5.644450346946911,
           "width": 177.6601671309195,
           "height": 31.977715877437333,
@@ -244,7 +235,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316339",
           "mappings": [],
           "boot_flag": "false",
           "class": "indicator"
@@ -259,7 +250,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316341",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -273,7 +264,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316343",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -287,7 +278,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316344",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -301,7 +292,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316544",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -315,7 +306,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316545",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -329,7 +320,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316546",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -343,7 +334,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316548",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -357,7 +348,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316549",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -371,7 +362,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316550",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -430,7 +421,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "312992",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -444,7 +435,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316345",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -458,7 +449,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316349",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -472,7 +463,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316350",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -486,7 +477,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316353",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -500,7 +491,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316357",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -514,7 +505,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316358",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -528,7 +519,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316499",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -542,7 +533,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316501",
           "boot_flag": "false",
           "class": "indicator"
         },
@@ -556,7 +547,7 @@
           "fillStyle": "black",
           "strokeStyle": "darkgray",
           "rotation": 0,
-          "id": "",
+          "id": "316504",
           "boot_flag": "false",
           "class": "indicator"
         },
