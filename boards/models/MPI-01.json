@@ -3,12 +3,12 @@
   "height": 600,
   "type": "model-layer",
   "translate": {
-    "x": 0,
-    "y": 148.375
+    "x": 140,
+    "y": -9
   },
   "scale": {
-    "x": 0.76875,
-    "y": 0.76875
+    "x": 1.095,
+    "y": 1.095
   },
   "components": [
     {
@@ -103,7 +103,8 @@
       "colorOn": "rgb(10, 1, 65)",
       "colorOff": "lightgray",
       "rotation": 0,
-      "id": "ss-01"
+      "id": "ss-01",
+      "text": "fsafas"
     },
     {
       "type": "seven-segment",

@@ -3,12 +3,12 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 0,
-    "y": 35.75
+    "x": 289.91420765027317,
+    "y": 13.57377049180328
   },
   "scale": {
-    "x": 0.5791666666666667,
-    "y": 0.5791666666666667
+    "x": 0.7472222222222222,
+    "y": 0.7472222222222222
   },
   "components": [
     {
@@ -1692,6 +1692,27 @@
           "class": "indicator"
         }
       ]
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": -11.757772290165576,
+      "top": 1013.9173729152553,
+      "width": 195.65279770444772,
+      "height": 57.33142037302741,
+      "fillStyle": "",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 0,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "text": "T04286",
+      "fontFamily": "AAA",
+      "lineHeight": 0,
+      "fontSize": 50,
+      "bold": false
     }
   ]
 }

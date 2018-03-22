@@ -3,12 +3,12 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 0,
-    "y": 35.75
+    "x": 428.94444444444446,
+    "y": 0
   },
   "scale": {
-    "x": 0.5791666666666667,
-    "y": 0.5791666666666667
+    "x": 0.6453703703703704,
+    "y": 0.6453703703703704
   },
   "mappings": [],
   "components": [
@@ -1748,6 +1748,27 @@
         "T042/T04289/3/GW98",
         "T042/T04289/4/GW99"
       ]
+    },
+    {
+      "type": "rect",
+      "xx": 0,
+      "left": -8.07747489239614,
+      "top": 1014.9210903873743,
+      "width": 195.65279770444772,
+      "height": 57.33142037302741,
+      "fillStyle": "",
+      "strokeStyle": "#000",
+      "alpha": 1,
+      "hidden": false,
+      "lineWidth": 0,
+      "lineDash": "solid",
+      "lineCap": "butt",
+      "rotation": 0,
+      "text": "T04280",
+      "fontFamily": "AAA",
+      "lineHeight": 0,
+      "fontSize": 50,
+      "bold": false
     }
   ]
 }
