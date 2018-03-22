@@ -1,5 +1,6 @@
 import { Component, Container } from '@hatiolab/things-scene';
 import IMAGE from '../assets/gateway.png';
+import uuidv4 from 'uuid/v4';
 
 import {
   buttons
@@ -97,9 +98,10 @@ export default class Gateway extends Container {
 
   generateMessageProperties() {
     return {
-      "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-      ),
+      "id": uuidv4(),
+      // "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      //   (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      // ),
       "time": Date.now(),
       "dest_id": "mps_server",
       "source_id": this.model.id,
@@ -120,12 +122,12 @@ export default class Gateway extends Container {
         "action": action + "_ACK"
       }
     };
-    if(action == "IND_ON_REQ") {
+    if (action == "IND_ON_REQ") {
       msg.body = {
         action: "IND_ON_REQ_ACK",
         biz_type: body.biz_type,
         action_type: body.action_type,
-        ind_on: body.ind_on.map( ind => {
+        ind_on: body.ind_on.map(ind => {
           return {
             id: ind.id,
             biz_id: ind.biz_id
@@ -218,7 +220,7 @@ export default class Gateway extends Container {
     consoleLogger("sent GW_INIT_REQ", publisher.data);
   }
 
-  off(){
+  off() {
     if (this.state.power_flag == "false") return;
 
     this.timerOff();
@@ -232,11 +234,11 @@ export default class Gateway extends Container {
       indicator.lightOff();
     });
     consoleLogger("turned off " + this.model.id);
-    
+
   }
 
   setTimer(timestamp) {
-    if(!this.timer) return;
+    if (!this.timer) return;
     var digitalClock = ("0" + new Date(timestamp).getHours()).substr(-2) + ":" +
       ("0" + new Date(timestamp).getMinutes()).substr(-2) + ":" +
       ("0" + new Date(timestamp).getSeconds()).substr(-2);
@@ -251,7 +253,7 @@ export default class Gateway extends Container {
     //   });
     //   this.timeflow = setInterval(() => {
     //     if (!this.root || !this.timer) { this.timerOff(); delete this.timeflow; return; }
-        
+
     //     hms[2]++;
     //     if (hms[2] >= 60) {
     //       hms[2] = 0;
@@ -271,7 +273,7 @@ export default class Gateway extends Container {
 
   timerOff() {
     consoleLogger(this.model.id, "timer off");
-    
+
     clearInterval(this.timeflow);
   }
 

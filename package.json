@@ -12,6 +12,8 @@
     "@things-scene/clock": "^2.1.0"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.2.44"
+    "@hatiolab/things-scene": "^2.2.44",
+    "npm": "^5.7.1",
+    "uuid": "^3.2.1"
   }
 }

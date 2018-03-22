@@ -46,7 +46,7 @@ export function onmessage(gateway, message) {
           let component = indicator;
 
           // 시뮬레이션 편의용: MPI 아이디 서버에서 부여
-          if(!component.model.id && !gateway.findById(indicators[i].id)){
+          if (!component.model.id && !gateway.findById(indicators[i].id)) {
             component.model.id = indicators[i].id;
             gateway.root.indexMap[component.model.id] = component;
             i++;
@@ -115,7 +115,7 @@ export function onmessage(gateway, message) {
           indicator.lightOff();
         });
 
-        
+
 
         var indicators = message && message.body && message.body.ind_on;
 
