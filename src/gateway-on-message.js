@@ -1,12 +1,16 @@
+export function consoleLogger() {
+  // console.log(arguments[0], arguments[1]);
+}
+
 export function onmessage(gateway, message) {
   if (gateway.state.power_flag == "false") return;
   if (!message.properties.is_reply) {
-    console.log("received " + (message.body.action ? message.body.action : "unknown action"), message);
+    consoleLogger("received " + (message.body.action ? message.body.action : "unknown action"), message);
 
     // 메시지 reply에 action string 추가, stock 또는 ind on 명령일 경우 biz id 추가
     gateway.publisher.data =
       gateway.generateReplyMessage(message.properties.id, message.properties.source_id, message.body.action, message.body);
-    console.log("sent reply: ", gateway.publisher.data);
+    consoleLogger("sent reply: ", gateway.publisher.data);
 
     switch (message.body.action) {
       // 2.5 boot response
@@ -28,7 +32,7 @@ export function onmessage(gateway, message) {
             // "dummy": "dummy"
           }
         };
-        console.log("sent GW_INIT_RPT", gateway.publisher.data);
+        consoleLogger("sent GW_INIT_RPT", gateway.publisher.data);
 
         gateway.setState('boot_flag', String("true")); // gw on
 
@@ -71,7 +75,7 @@ export function onmessage(gateway, message) {
               "version": component.version
             }
           }
-          console.log("sent IND_INIT_RPT", gateway.publisher.data);
+          consoleLogger("sent IND_INIT_RPT", gateway.publisher.data);
 
           // 2.10 indicator ID 소등
           component.lightOff();
@@ -159,7 +163,7 @@ export function onmessage(gateway, message) {
               "result": true
             }
           }
-          console.log("sent IND_OFF_RES", gateway.publisher.data);
+          consoleLogger("sent IND_OFF_RES", gateway.publisher.data);
         });
         break;
       // 4.4 gateway에 배포 요청
@@ -194,7 +198,7 @@ export function onmessage(gateway, message) {
             "time": Date.now()
           }
         }
-        console.log("sent GW_DEP_RES", gateway.publisher.data);
+        consoleLogger("sent GW_DEP_RES", gateway.publisher.data);
 
         gateway.off();
         gateway.boot();
@@ -235,7 +239,7 @@ export function onmessage(gateway, message) {
               time: Date.now()
             }
           }
-          console.log("sent IND_DEP_RES", gateway.publisher.data);
+          consoleLogger("sent IND_DEP_RES", gateway.publisher.data);
         });
         // boot
         gateway.off();
@@ -250,6 +254,6 @@ export function onmessage(gateway, message) {
         console.log("unknown message", message);
     }
   } else {
-    console.log("server reply: ", message);
+    consoleLogger("server reply: ", message);
   }
 }

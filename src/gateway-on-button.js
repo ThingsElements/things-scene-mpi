@@ -3,6 +3,8 @@ import stop from '../assets/button-stop.png';
 import status from '../assets/button-status.png';
 import error from '../assets/button-error.png';
 
+import { consoleLogger } from './gateway-on-message';
+
 export const buttons = [{
   icon: start,
   handler: onclickStart
@@ -23,18 +25,18 @@ export const buttons = [{
 function onclickStart(gateway) {
   // Boot
   // 전원 ON
-  console.log('onclickStart');
+  consoleLogger('onclickStart');
   gateway.boot();
 }
 
 function onclickStop(gateway) {
   // 전원 OFF
-  console.log('onclickStop');
+  consoleLogger('onclickStop');
   gateway.off();
 }
 
 function onclickStatus(gateway) {
-  console.log('onclickStatus');
+  consoleLogger('onclickStatus');
   if (gateway.state.power_flag == "false") return;
 
   ////////random indicator////////
@@ -50,12 +52,12 @@ function onclickStatus(gateway) {
       // status: (indicator.state.boot_flag == "true") ? "ok" : "offline"
     }
   }
-  console.log("sent IND_STATUS_RPT", gateway.publisher.data);
+  consoleLogger("sent IND_STATUS_RPT", gateway.publisher.data);
   ////////////////////////////////
 }
 
 function onclickError(gateway) {
-  console.log('onclickError');
+  consoleLogger('onclickError');
   if (gateway.state.power_flag == "false") return;
 
   let hwgb = Math.random();
@@ -69,11 +71,11 @@ function onclickError(gateway) {
       message: ["ERR001", "ERR002", "ERR003", "ERR004", "ERR005", "ERR006"][Math.floor(Math.random() * 6)]
     }
   }
-  console.log("sent ERR_RPT", gateway.publisher.data);
+  consoleLogger("sent ERR_RPT", gateway.publisher.data);
 }
 
 function onclickTimesync(gateway) {
-  console.log('onclickTimesync');
+  consoleLogger('onclickTimesync');
   if (gateway.state.power_flag == "false") return;
 
   gateway.publisher.data = {
@@ -82,5 +84,5 @@ function onclickTimesync(gateway) {
       action: "TIMESYNC_REQ"
     }
   }
-  console.log("sent TIMESYNC_REQ", gateway.publisher.data);
+  consoleLogger("sent TIMESYNC_REQ", gateway.publisher.data);
 }

@@ -546,9 +546,16 @@
     "@webcomponents/shadycss" "^1.0.0"
     "@webcomponents/webcomponentsjs" "^1.0.0"
 
-"@things-scene/mqtt@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@things-scene/mqtt/-/mqtt-0.2.0.tgz#58722d86e663be260abed121905424c890e9badc"
+"@things-scene/clock@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@things-scene/clock/-/clock-2.1.0.tgz#bfe515c466a8fc18acc4dbc48f9181858375a707"
+  dependencies:
+    "@hatiolab/things-scene" "^2.2.36"
+    moment "^2.21.0"
+
+"@things-scene/mqtt@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@things-scene/mqtt/-/mqtt-0.2.1.tgz#987132931f62688fb1b08ae9818c4c808e9f978d"
   dependencies:
     mqtt "^2.15.3"
 
@@ -2723,7 +2730,7 @@ debug@^3.0.0, debug@^3.1.0:
   dependencies:
     ms "2.0.0"
 
-"debug@github:ngokevin/debug#noTimestamp":
+debug@ngokevin/debug#noTimestamp:
   version "2.2.0"
   resolved "https://codeload.github.com/ngokevin/debug/tar.gz/ef5f8e66d49ce8bc64c6f282c15f8b7164409e3a"
 
@@ -2921,7 +2928,7 @@ doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-"document-register-element@github:dmarcos/document-register-element#8ccc532b7":
+document-register-element@dmarcos/document-register-element#8ccc532b7:
   version "0.5.4"
   resolved "https://codeload.github.com/dmarcos/document-register-element/tar.gz/8ccc532b7f3744be954574caf3072a5fd260ca90"
 
@@ -5871,6 +5878,10 @@ mksnapshot@^0.3.0:
     fs-extra "0.26.7"
     request "^2.79.0"
 
+moment@^2.21.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -6681,7 +6692,7 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
-"polymer-redux@github:tur-nr/polymer-redux#polymer-3":
+polymer-redux@tur-nr/polymer-redux#polymer-3:
   version "1.0.4"
   resolved "https://codeload.github.com/tur-nr/polymer-redux/tar.gz/6fb60876f3e4b6d406ccb105f0649c9957957b4a"
   dependencies:
@@ -7705,7 +7716,7 @@ remark-heading-gap@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/remark-heading-gap/-/remark-heading-gap-3.0.0.tgz#f52ac47a27995ef3248a59eb7544b5620b4736a6"
 
-"remark-license@github:niftylettuce/remark-license":
+remark-license@niftylettuce/remark-license:
   version "4.0.1"
   resolved "https://codeload.github.com/niftylettuce/remark-license/tar.gz/17ecb8f64f8f6082414d14f9267a12764e6ddbfb"
   dependencies:

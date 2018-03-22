@@ -1,6 +1,8 @@
 import { Component, RectPath, Shape } from '@hatiolab/things-scene';
 import boot from '../assets/boot-button.png';
 
+import { consoleLogger } from './gateway-on-message';
+
 export const buttons = [{
   icon: boot,
   handler: onclickBoot
@@ -83,7 +85,7 @@ export default class BootButton extends RectPath(Shape) {
 
 
 function onclickBoot(button) {
-  console.log('onclickBoot');
+  consoleLogger('onclickBoot');
   if(!button.data) return;
   var gateways = button.data;
   for(let i = 0; i < gateways.length; i++){
@@ -103,7 +105,7 @@ function onclickBoot(button) {
       }
     };
 
-    console.log("sent GW_INIT_REQ", button.publisher.data);
+    consoleLogger("sent GW_INIT_REQ", button.publisher.data);
   }
 }
 

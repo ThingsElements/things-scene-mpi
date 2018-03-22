@@ -7,8 +7,9 @@
   "author": "Hatio Lab. <heartyoh@hatiolab.com>",
   "devDependencies": {
     "@hatiolab/things-shell": "^0.3.0",
-    "@things-scene/mqtt": "^0.2.0",
-    "@things-scene/random": "^0.2.0"
+    "@things-scene/mqtt": "^0.2.1",
+    "@things-scene/random": "^0.2.0",
+    "@things-scene/clock": "^2.1.0"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.2.44"

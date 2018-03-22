@@ -6,7 +6,8 @@ import {
 } from './gateway-on-button';
 
 import {
-  onmessage
+  onmessage,
+  consoleLogger
 } from './gateway-on-message';
 
 const BUTTONS_MARGIN = 10;
@@ -65,7 +66,7 @@ export default class Gateway extends Container {
 
   dispose() {
     this.timerOff();
-    delete this.time;
+    delete this.timeflow;
     super.dispose();
   }
 
@@ -91,7 +92,7 @@ export default class Gateway extends Container {
       "properties": this.generateMessageProperties(),
       "body": indicatorMessage
     }
-    console.log("sent " + (indicatorMessage.action ? indicatorMessage.action : "indicator message"), this.publisher.data);
+    consoleLogger("sent " + (indicatorMessage.action ? indicatorMessage.action : "indicator message"), this.publisher.data);
   }
 
   generateMessageProperties() {
@@ -191,7 +192,7 @@ export default class Gateway extends Container {
       publisher
     } = this;
 
-    console.log('onclickStart');
+    consoleLogger('onclickStart');
 
     // 2.1 indicator ready
     this.indicators.forEach(indicator => {
@@ -214,7 +215,7 @@ export default class Gateway extends Container {
         }
       };
     }
-    console.log("sent GW_INIT_REQ", publisher.data);
+    consoleLogger("sent GW_INIT_REQ", publisher.data);
   }
 
   off(){
@@ -230,7 +231,7 @@ export default class Gateway extends Container {
       indicator.setState('boot_flag', String('false'));
       indicator.lightOff();
     });
-    console.log("turned off " + this.model.id);
+    consoleLogger("turned off " + this.model.id);
     
   }
 
@@ -243,35 +244,35 @@ export default class Gateway extends Container {
   }
 
   timerOn() {
-    if (this.timer) {
-      console.log(this.model.id, "timer on");
-      
-      this.time = setInterval(() => {
-        if (!this.root || !this.timer) { this.timerOff(); delete this.time; return; }
-        let hms = this.timer.value.split(':').map(t => {
-          return parseInt(t);
-        });
-        hms[2]++;
-        if (hms[2] >= 60) {
-          hms[2] = 0;
-          hms[1]++;
-          if (hms[1] >= 60) {
-            hms[1] = 0;
-            hms[0]++;
-            if (hms[0] >= 24) {
-              hms[0] = 0;
-            }
-          }
-        }
-        this.timer.value = ("0" + hms[0]).substr(-2) + ":" + ("0" + hms[1]).substr(-2) + ":" + ("0" + hms[2]).substr(-2);
-      }, 1000);
-    }
+    // if (this.timer) {
+    //   consoleLogger(this.model.id, "timer on");
+    //   let hms = this.timer.value.split(':').map(t => {
+    //     return parseInt(t);
+    //   });
+    //   this.timeflow = setInterval(() => {
+    //     if (!this.root || !this.timer) { this.timerOff(); delete this.timeflow; return; }
+        
+    //     hms[2]++;
+    //     if (hms[2] >= 60) {
+    //       hms[2] = 0;
+    //       hms[1]++;
+    //       if (hms[1] >= 60) {
+    //         hms[1] = 0;
+    //         hms[0]++;
+    //         if (hms[0] >= 24) {
+    //           hms[0] = 0;
+    //         }
+    //       }
+    //     }
+    //     this.timer.value = ("0" + hms[0]).substr(-2) + ":" + ("0" + hms[1]).substr(-2) + ":" + ("0" + hms[2]).substr(-2);
+    //   }, 990);
+    // }
   }
 
   timerOff() {
-    console.log(this.model.id, "timer off");
+    consoleLogger(this.model.id, "timer off");
     
-    clearInterval(this.time);
+    clearInterval(this.timeflow);
   }
 
   onchangeData(after, before) {

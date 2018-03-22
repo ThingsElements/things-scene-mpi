@@ -1,7 +1,9 @@
+import { consoleLogger } from './gateway-on-message';
+
 export function onMouseDownMButton(indicator) {
   if (indicator.state.boot_flag != "true" || !indicator.lit) return;
   // modify
-  console.log('onMouseDownButton', 'M');
+  consoleLogger('onMouseDownButton', 'M');
 
   let boxQuan = Math.round(indicator.store.org_box_qty * Math.random());
   let eaQuan = Math.round(indicator.store.org_ea_qty * Math.random());
@@ -15,7 +17,7 @@ export function onMouseDownMButton(indicator) {
 export function onMouseDownFButton(indicator) {
   if (indicator.state.boot_flag != "true" || !indicator.lit || indicator.currentTask == indicator.tasks.STOCK) return;
   // full box
-  console.log('onMouseDownButton', 'F');
+  consoleLogger('onMouseDownButton', 'F');
 
   indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "full"));
 
@@ -26,7 +28,7 @@ export function onMouseDownFButton(indicator) {
 export function onMouseDownCButton(indicator) {
   if (indicator.state.boot_flag != "true" || !indicator.lit || indicator.currentTask == indicator.tasks.STOCK) return;
   // cancel
-  console.log('onMouseDownButton', 'C');
+  consoleLogger('onMouseDownButton', 'C');
 
   indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "cancel", 0, 0));
 
@@ -37,7 +39,7 @@ export function onMouseDownCButton(indicator) {
 export function onMouseDownBigButton(indicator) {
   // 작업자 버튼 터치
   if (indicator.state.boot_flag != "true" || !indicator.lit) return;
-  console.log('onMouseDownBigButton');
+  consoleLogger('onMouseDownBigButton');
 
   // 3.6 G/W에 정보 전송
   // 3.7 MPS에 전달
