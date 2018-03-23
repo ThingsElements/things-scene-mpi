@@ -22,7 +22,7 @@ export function onMouseDownFButton(indicator) {
   indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "full"));
 
   // TODO ack 받으면 소등
-  indicator.lightOff();  
+  indicator.lightOff();
 }
 
 export function onMouseDownCButton(indicator) {
@@ -33,7 +33,7 @@ export function onMouseDownCButton(indicator) {
   indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "cancel", 0, 0));
 
   // TODO ack 받으면 소등
-  indicator.lightOff();  
+  indicator.lightOff();
 }
 
 export function onMouseDownBigButton(indicator) {
@@ -43,19 +43,19 @@ export function onMouseDownBigButton(indicator) {
 
   // 3.6 G/W에 정보 전송
   // 3.7 MPS에 전달
-  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok" ));  
+  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok"));
 
   // TODO ack 받으면 소등
   indicator.lightOff();
 }
 
-var makeMsgBody = function(indicator, action, store, biz, resBox, resEa){
+var makeMsgBody = function (indicator, action, store, biz, resBox, resEa) {
   var {
     org_box_qty,
     org_ea_qty
   } = indicator.state;
-  
-  return {
+
+  var result = {
     "action": action,
     "id": indicator.model.id,
     "biz_id": store ? store.biz_id : undefined,
@@ -66,12 +66,15 @@ var makeMsgBody = function(indicator, action, store, biz, resBox, resEa){
     "org_ea_qty": store ? parseInt(store.org_ea_qty) : 0 || 0,
     "res_box_qty": resBox || parseInt(org_box_qty),
     "res_ea_qty": resEa || parseInt(org_ea_qty)
-  }
+  };
+  if (store.stock_taking_id) result.stock_taking_id = store.stock_taking_id;// stock_taking_id가 있으면 그대로 돌려줌
+
+  return result;
 }
 
 // var currentAction = function(indicator){
 //   var resActStr = "";
-  
+
 //   switch (indicator.currentTask) {
 //     case indicator.tasks.PICK:
 //       resActStr = "IND_ON_RES";

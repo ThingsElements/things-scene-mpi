@@ -128,10 +128,11 @@ export default class Gateway extends Container {
         biz_type: body.biz_type,
         action_type: body.action_type,
         ind_on: body.ind_on.map(ind => {
-          return {
-            id: ind.id,
-            biz_id: ind.biz_id
-          }
+          let indOn = {};
+          indOn.id = ind.id;
+          indOn.biz_id = ind.biz_id;
+          if (ind.stock_taking_id) indOn.stock_taking_id = ind.stock_taking_id;
+          return indOn;
         })
       }
     }
