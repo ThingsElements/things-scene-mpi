@@ -27,7 +27,7 @@ export function onmessage(gateway, message) {
           "properties": gateway.generateMessageProperties(),
           "body": {
             "action": "GW_INIT_RPT",
-            "id": gateway.model.id.split('/')[gateway.model.id.split('/').length - 1],
+            "id": gateway.model.id,
             "version": gateway.version,
             // "dummy": "dummy"
           }
@@ -82,30 +82,7 @@ export function onmessage(gateway, message) {
           component.lightOff();
         });
         // indicator 초기화 모두 완료
-
         break;
-      // case "STOCK_ON_REQ":
-      //   if (gateway.state.boot_flag == "false") return;
-      //   gateway.indicators.forEach(indicator => {
-      //     indicator.lightOff();
-      //   });
-
-      //   var indicators = message && message.body && message.body.stock_on;
-
-      //   indicators && indicators.forEach(indicator => {
-      //     let component = gateway.findById(indicator.id);
-      //     if (!component) return;
-      //     if (component.state.boot_flag == "false") return;
-      //     component.store = indicator;
-      //     component.currentTask = component.tasks.STOCK;
-
-      //     component.setState('org_box_qty', String(("00" + indicator.org_box_qty).substr(-3)));
-      //     component.setState('org_ea_qty', String(("00" + indicator.org_ea_qty).substr(-3)));
-      //     component.setState('buttonColor', String(component.colors[indicator.color] || "black"));
-
-      //     component.lit = true; // 인디케이터 점등여부 확인용 | 소등시 버튼 반응 없도록
-      //   });
-      //   break;
       // 3.3 G/W에 indicator 점등 요청
       case "IND_ON_REQ":
         if (gateway.state.boot_flag == "false") return;
@@ -193,7 +170,7 @@ export function onmessage(gateway, message) {
           "properties": gateway.generateMessageProperties(),
           "body": {
             "action": "GW_DEP_RES",
-            "id": gateway.model.id.split('/')[gateway.model.id.split('/').length - 1],
+            "id": gateway.model.id,
             "result": isUpdated,
             "version": gateway.version,
             "time": Date.now()

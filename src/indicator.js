@@ -359,8 +359,8 @@ export default class Indicator extends RectPath(Shape) {
     return NATURE;
   }
 
-  onBigButton() {
-    onMouseDownBigButton(this);
+  onButton() {
+    onMouseDownMButton(this);
   }
 }
 

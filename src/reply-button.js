@@ -91,7 +91,7 @@ function onClickReply(button) {
 
   gateways.forEach((gw, index) => {
     gw.indicators.forEach(ind => {
-      ind.onBigButton();
+      ind.onButton();
     });
   });
 }
