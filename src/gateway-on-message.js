@@ -251,6 +251,16 @@ export function onmessage(gateway, message) {
         gateway.setTimer(message.body.svr_time);
         if (!gateway.time) gateway.timerOn();
         break;
+      case "MW_MOD_IP_REQ":
+        gateway.publisher.data = {
+          properties: gateway.generateMessageProperties(),
+          body: {
+            action: "MW_MOD_IP_RES",
+            id: gateway.model.id,
+            result: Math.random() > 0.5 ? true : false
+          }
+        }
+        break;
       default:
         console.log("unknown message", message);
     }

@@ -8,7 +8,7 @@ export function onMouseDownMButton(indicator) {
   let boxQuan = Math.round(indicator.store.org_box_qty * Math.random());
   let eaQuan = Math.round(indicator.store.org_ea_qty * Math.random());
 
-  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok", (indicator.currentTask == indicator.tasks.STOCK) ? (boxQuan * 2) : boxQuan, (indicator.currentTask == indicator.tasks.STOCK) ? (eaQuan * 2) : eaQuan));
+  indicator.parent.passIndicatorsMessage(_makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok", (indicator.currentTask == indicator.tasks.STOCK) ? (boxQuan * 2) : boxQuan, (indicator.currentTask == indicator.tasks.STOCK) ? (eaQuan * 2) : eaQuan));
 
   // TODO ack 받으면 소등
   indicator.lightOff();
@@ -19,7 +19,7 @@ export function onMouseDownFButton(indicator) {
   // full box
   consoleLogger('onMouseDownButton', 'F');
 
-  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "full"));
+  indicator.parent.passIndicatorsMessage(_makeMsgBody(indicator, "IND_ON_RES", indicator.store, "full"));
 
   // TODO ack 받으면 소등
   indicator.lightOff();
@@ -30,7 +30,7 @@ export function onMouseDownCButton(indicator) {
   // cancel
   consoleLogger('onMouseDownButton', 'C');
 
-  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "cancel", 0, 0));
+  indicator.parent.passIndicatorsMessage(_makeMsgBody(indicator, "IND_ON_RES", indicator.store, "cancel", 0, 0));
 
   // TODO ack 받으면 소등
   indicator.lightOff();
@@ -43,13 +43,13 @@ export function onMouseDownBigButton(indicator) {
 
   // 3.6 G/W에 정보 전송
   // 3.7 MPS에 전달
-  indicator.parent.passIndicatorsMessage(makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok"));
+  indicator.parent.passIndicatorsMessage(_makeMsgBody(indicator, "IND_ON_RES", indicator.store, "ok"));
 
   // TODO ack 받으면 소등
   indicator.lightOff();
 }
 
-var makeMsgBody = function (indicator, action, store, biz, resBox, resEa) {
+var _makeMsgBody = function (indicator, action, store, biz, resBox, resEa) {
   var {
     org_box_qty,
     org_ea_qty

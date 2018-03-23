@@ -3,12 +3,12 @@
   "height": 1080,
   "type": "model-layer",
   "translate": {
-    "x": 428.94444444444446,
-    "y": 0
+    "x": 0,
+    "y": 177.71875
   },
   "scale": {
-    "x": 0.6453703703703704,
-    "y": 0.6453703703703704
+    "x": 0.3421875,
+    "y": 0.3421875
   },
   "components": [
     {
@@ -1713,6 +1713,18 @@
       "lineHeight": 0,
       "fontSize": 50,
       "bold": false
+    },
+    {
+      "type": "reply-button",
+      "xx": 0,
+      "left": 1760.4337899543384,
+      "top": 14.999999999999943,
+      "width": 144.79452054794547,
+      "height": 144.7945205479453,
+      "fillStyle": "transparent",
+      "strokeStyle": "transparent",
+      "rotation": 0,
+      "id": "replyAll"
     }
   ]
 }

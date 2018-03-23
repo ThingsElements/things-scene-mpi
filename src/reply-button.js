@@ -86,6 +86,14 @@ export default class ReplyButton extends RectPath(Shape) {
 
 function onClickReply(button) {
   consoleLogger('onClickReply');
+
+  var gateways = button.root.findAll("gateway");
+
+  gateways.forEach((gw, index) => {
+    gw.indicators.forEach(ind => {
+      ind.onBigButton();
+    });
+  });
 }
 
 Component.register('reply-button', ReplyButton);

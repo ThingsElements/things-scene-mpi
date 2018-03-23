@@ -358,6 +358,10 @@ export default class Indicator extends RectPath(Shape) {
   get nature() {
     return NATURE;
   }
+
+  onBigButton() {
+    onMouseDownBigButton(this);
+  }
 }
 
 Component.register('indicator', Indicator);
