@@ -86,9 +86,9 @@ export default class BootButton extends RectPath(Shape) {
 
 function onclickBoot(button) {
   consoleLogger('onclickBoot');
-  if(!button.data) return;
+  if (!button.data) return;
   var gateways = button.data;
-  for(let i = 0; i < gateways.length; i++){
+  for (let i = 0; i < gateways.length; i++) {
     button.publisher.data = {
       "properties": {
         "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
