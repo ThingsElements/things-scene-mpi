@@ -7,9 +7,7 @@
   "author": "Hatio Lab. <heartyoh@hatiolab.com>",
   "scripts": {
     "serve": "things-shell",
-    "serve:dev": "things-shell-dev",
-    "serve:dev:cli": "things-shell-dev",
-    "serve:dev:full": "nodemon"
+    "serve:dev": "things-shell-dev"
   },
   "devDependencies": {
     "@hatiolab/things-shell": "^0.4.2",
