@@ -1,11 +1,13 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-coverage
-dist
-node_modules
-.DS_Store
-*.report.html
+DEPLOYMENT.md
+DEVELOPMENT.md
 bower_components
-licenses/*.*
+node_modules
+licenses
+.editorconfig
+.gitignore
+.git
+.vscode
+.travis
+.yo-rc.json
+npm-debug.log
+db.sqlite
