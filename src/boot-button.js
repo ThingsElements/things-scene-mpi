@@ -39,7 +39,7 @@ export default class BootButton extends RectPath(Shape) {
     }
   }
 
-  _draw(context) {
+  render(context) {
     var {
       left,
       top,

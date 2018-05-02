@@ -91,7 +91,7 @@ import SegmentDisplay from './segment-display';
 
 export default class SevenSegment extends RectPath(Shape) {
 
-  _draw(context) {
+  render(context) {
     var {
       top,
       left,

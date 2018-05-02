@@ -305,7 +305,7 @@ export default class Indicator extends RectPath(Shape) {
     context.fillText('C', 113 * WRATE, 38 * HRATE);
   }
 
-  _draw(context) {
+  render(context) {
     var {
       left,
       top,

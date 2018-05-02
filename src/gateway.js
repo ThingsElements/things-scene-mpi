@@ -140,7 +140,7 @@ export default class Gateway extends Container {
     return msg;
   }
 
-  _draw(context) {
+  render(context) {
     var {
       left,
       top,

@@ -39,7 +39,7 @@ export default class ReplyButton extends RectPath(Shape) {
     }
   }
 
-  _draw(context) {
+  render(context) {
     var {
       left,
       top,
