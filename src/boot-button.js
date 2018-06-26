@@ -1,7 +1,15 @@
-import { Component, RectPath, Shape } from '@hatiolab/things-scene';
+import {
+  Component,
+  RectPath,
+  Shape
+} from '@hatiolab/things-scene';
 import boot from '../assets/boot-button.png';
 
-import { consoleLogger } from './gateway-on-message';
+import uuidv4 from 'uuid/v4';
+
+import {
+  consoleLogger
+} from './gateway-on-message';
 
 export const buttons = [{
   icon: boot,
@@ -39,7 +47,7 @@ export default class BootButton extends RectPath(Shape) {
     }
   }
 
-  render(context) {
+  _draw(context) {
     var {
       left,
       top,
@@ -66,7 +74,10 @@ export default class BootButton extends RectPath(Shape) {
       height
     } = this.bounds;
 
-    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
+    var {
+      x,
+      y
+    } = this.transcoordC2S(e.offsetX, e.offsetY);
 
     var button = this.buttonContains(x - left - BUTTONS_MARGIN, y - top - BUTTONS_MARGIN);
     if (button) {
@@ -89,11 +100,16 @@ function onclickBoot(button) {
   if (!button.data) return;
   var gateways = button.data;
   for (let i = 0; i < gateways.length; i++) {
+    // var gatewayObjects = gateways.map((value, index) => {
+    //   return this.root.findById(value);
+    // }, this);
+
+    // gatewayObjects.forEach((gateway, index) => {
+    //   gateway.boot();
+    // });
     button.publisher.data = {
       "properties": {
-        "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-        ),
+        "id": uuidv4(),
         "time": Date.now(),
         "dest_id": "mps_server",
         "source_id": gateways[i],
@@ -101,7 +117,7 @@ function onclickBoot(button) {
       },
       "body": {
         "action": "GW_INIT_REQ",
-        "id": gateways[i].split('/')[3]
+        "id": gateways[i]
       }
     };
 
@@ -110,4 +126,3 @@ function onclickBoot(button) {
 }
 
 Component.register('boot-button', BootButton);
-

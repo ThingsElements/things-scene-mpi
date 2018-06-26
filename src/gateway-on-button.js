@@ -3,7 +3,9 @@ import stop from '../assets/button-stop.png';
 import status from '../assets/button-status.png';
 import error from '../assets/button-error.png';
 
-import { consoleLogger } from './gateway-on-message';
+import {
+  consoleLogger
+} from './gateway-on-message';
 
 export const buttons = [{
   icon: start,
@@ -48,7 +50,9 @@ function onclickStatus(gateway) {
       action: "IND_STATUS_RPT",
       id: indicator.model.id,
       version: indicator.version,
-      status: (Math.random() > 0.5) ? "ok" : "offline" // random status
+      status: (Math.random() > 0.5) ? "ok" : "offline", // random status
+      rssi: Math.floor(Math.random() * 100).toString(),
+      battery: Math.floor(Math.random() * 100).toString()
       // status: (indicator.state.boot_flag == "true") ? "ok" : "offline"
     }
   }

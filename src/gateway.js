@@ -1,4 +1,7 @@
-import { Component, Container } from '@hatiolab/things-scene';
+import {
+  Component,
+  Container
+} from '@hatiolab/things-scene';
 import IMAGE from '../assets/gateway.png';
 import uuidv4 from 'uuid/v4';
 
@@ -23,19 +26,34 @@ const NATURE = {
   properties: [{
     type: 'string',
     name: 'publisher',
-    label: 'publisher'
+    label: 'publisher',
+    placeholder: ''
   }, {
-    type: 'string',
-    name: 'timer',
-    label: 'timer'
-  }, {
-    type: 'string',
-    label: 'power-flag',
+    type: 'select',
+    label: 'power flag',
     name: 'power_flag',
+    property: {
+      options: [{
+        display: 'true',
+        value: 'true'
+      }, {
+        display: 'false',
+        value: 'false'
+      }]
+    }
   }, {
-    type: 'string',
-    label: 'boot-flag',
+    type: 'select',
+    label: 'boot flag',
     name: 'boot_flag',
+    property: {
+      options: [{
+        display: 'true',
+        value: 'true'
+      }, {
+        display: 'false',
+        value: 'false'
+      }]
+    }
   }]
 };
 
@@ -68,9 +86,11 @@ export default class Gateway extends Container {
   dispose() {
     this.timerOff();
     delete this.timeflow;
+    delete this.ledBlinker;
+    delete this.ledBarBlinker;
     super.dispose();
   }
-
+  
   buttonContains(x, y) {
     var rx = BUTTONS_RADIUS;
     var ry = BUTTONS_RADIUS;
@@ -99,9 +119,6 @@ export default class Gateway extends Container {
   generateMessageProperties() {
     return {
       "id": uuidv4(),
-      // "id": ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-      //   (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-      // ),
       "time": Date.now(),
       "dest_id": "mps_server",
       "source_id": this.model.id,
@@ -122,25 +139,36 @@ export default class Gateway extends Container {
         "action": action + "_ACK"
       }
     };
-    if (action == "IND_ON_REQ") {
-      msg.body = {
-        action: "IND_ON_REQ_ACK",
-        biz_type: body.biz_type,
-        action_type: body.action_type,
-        ind_on: body.ind_on.map(ind => {
-          let indOn = {};
-          indOn.id = ind.id;
-          indOn.biz_id = ind.biz_id;
-          if (ind.stock_taking_id) indOn.stock_taking_id = ind.stock_taking_id;
-          return indOn;
-        })
-      }
+    switch(action) {
+      case "IND_ON_REQ" :
+        msg.body = {
+          action: "IND_ON_REQ_ACK",
+          biz_type: body.biz_type,
+          action_type: body.action_type,
+          ret_args: body.ret_args,
+          read_only: body.read_only,
+          ind_on: body.ind_on.map(ind => {
+            let indOn = {};
+            indOn.id = ind.id;
+            indOn.biz_id = ind.biz_id;
+            if (ind.stock_taking_id) indOn.stock_taking_id = ind.stock_taking_id;
+            return indOn;
+          })
+        }
+        break;
+      case "LED_ON_REQ" :
+      case "LED_OFF_REQ" :
+        msg.body = {
+          action: action + "_ACK",
+          id: body.id
+        }
+        break;
     }
 
     return msg;
   }
 
-  render(context) {
+  _draw(context) {
     var {
       left,
       top,
@@ -151,7 +179,7 @@ export default class Gateway extends Container {
     context.beginPath();
 
     context.rect(left, top, width, height);
-
+    
     this.drawFill(context);
     this.drawStroke(context);
 
@@ -171,21 +199,69 @@ export default class Gateway extends Container {
   }
 
   get indicators() {
-    return this.findAll('indicator');
+    var groups = this.findAll('group');
+    if (groups.length == 0) return this.findAll('indicator');
+    var indicators = groups.map(function (group, index) {
+      var indicator = group.findFirst('indicator');
+      return indicator;
+    });
+    return indicators;
   }
 
   get publisher() {
     if (this.state.publisher) {
       return this.findById(this.state.publisher)
+    } else {
+      return this.findFirst('mqtt');
     }
   }
 
   get timer() {
-    if (this.state.timer) {
-      return this.findById(this.state.timer);
-    } else {
-      return false;
-    }
+    return this.findFirst('seven-segment');
+  }
+
+  startBlinkingLed() {
+    this.ledBlinker = setTimeout(() => {
+      this.indicators.forEach((indicator, index) => {
+        // 인디케이터가 켜져있고, 
+        var isLightOn = indicator.state.boot_flag == "true" && indicator.lit;
+        // 버튼 모드가 BLINK이고,
+        var isBtnModeBlink = indicator.getConf.btn_mode === indicator.btnModes.BLINK;
+        // display 상태가 아닐 때
+        var isNotDisplay = indicator.currentTask !== indicator.tasks.DISPLAY;
+        // 또는 인디케이터가 FULL 상태이며 이 상태에서 깜박임 옵션이 true일 때
+        var isFullState = indicator.currentTask == indicator.tasks.FULL;
+        if (isLightOn && ((isBtnModeBlink && isNotDisplay) || (indicator.getConf.blink_if_full && isFullState))) {
+          indicator.getState('buttonColor') === "#0000" ?
+            indicator.setState('buttonColor', String(indicator.colors[indicator.store.color])) :
+            indicator.setState('buttonColor', String("#0000"));
+        }
+      });
+      if(this.ledBlinker) this.startBlinkingLed();
+    }, this.indicators[0].getConf.btn_intvl * 100);
+  }
+
+  stopBlinkingLed() {
+    clearTimeout(this.ledBlinker);
+  }
+
+  startBlinkingLedBar() {
+    this.ledBarBlinker = setTimeout(() => {
+      this.indicators.forEach((indicator, index) => {
+        if (indicator.ledLit && indicator.getConf.led_bar_mode === indicator.btnModes.BLINK) {
+          if(indicator.ledRect.strokeStyle === '#0000') {
+            indicator.ledRect.strokeStyle = '#f00' + Math.round(indicator.getConf.led_bar_brtns * 15 / 10).toString(16);
+          } else {
+            indicator.ledRect.strokeStyle = '#0000';
+          }
+        }
+      });
+      if(this.ledBarBlinker) this.startBlinkingLedBar();
+    }, this.indicators[0].getConf.led_bar_intvl * 100);
+  }
+
+  stopBlinkingLedBar() {
+    clearTimeout(this.ledBarBlinker);
   }
 
   boot() {
@@ -199,10 +275,13 @@ export default class Gateway extends Container {
 
     // 2.1 indicator ready
     this.indicators.forEach(indicator => {
+      var segLen = indicator.displays.length * indicator.displays[0].pattern.length;
       // 2.2 indicater ID 점등
-      indicator.setState('org_box_qty', String(("00" + Math.floor(Math.random() * 1000)).substr(-3)));//indicator.model.id.substr(0, 3)));
-      indicator.setState('org_ea_qty', String(("00" + Math.floor(Math.random() * 1000)).substr(-3)));//indicator.model.id.substr(-3)));
-      indicator.setState('buttonColor', String("white"));
+      if(indicator.model.id){ // id가 있으면 점등
+        indicator.displayMessage(indicator.model.id);
+      } else { // id가 없으면 무작위값 점등
+        indicator.displayMessage(("0".repeat(segLen-1) + (Math.floor(Math.random() * parseInt(1 + "0".repeat(segLen))))).substr(-segLen));
+      }
     });
 
     // 2.3 gateway ready
@@ -214,7 +293,7 @@ export default class Gateway extends Container {
         properties: this.generateMessageProperties(),
         body: {
           action: 'GW_INIT_REQ',
-          id: this.model.id.split('/')[this.model.id.split('/').length - 1]
+          id: this.model.id //.split('/')[this.model.id.split('/').length - 1]
         }
       };
     }
@@ -225,6 +304,8 @@ export default class Gateway extends Container {
     if (this.state.power_flag == "false") return;
 
     this.timerOff();
+    this.stopBlinkingLed();
+    this.stopBlinkingLedBar();
 
     this.setState('power_flag', String('false'));
     this.setState('boot_flag', String('false'));
@@ -232,6 +313,7 @@ export default class Gateway extends Container {
 
     this.indicators.forEach(indicator => {
       indicator.setState('boot_flag', String('false'));
+      indicator.ledRect.strokeStyle = "#0000";
       indicator.lightOff();
     });
     consoleLogger("turned off " + this.model.id);
@@ -292,7 +374,10 @@ export default class Gateway extends Container {
       height
     } = this.bounds;
 
-    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
+    var {
+      x,
+      y
+    } = this.transcoordC2S(e.offsetX, e.offsetY);
 
     var button = this.buttonContains(x - left - BUTTONS_MARGIN, y - top - BUTTONS_MARGIN);
     if (button) {
@@ -308,7 +393,10 @@ export default class Gateway extends Container {
       height
     } = this.bounds;
 
-    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
+    var {
+      x,
+      y
+    } = this.transcoordC2S(e.offsetX, e.offsetY);
 
     var old = this._focusedButton;
     this._focusedButton = this.buttonContains(x - left - BUTTONS_MARGIN, y - top - BUTTONS_MARGIN);
@@ -318,10 +406,10 @@ export default class Gateway extends Container {
   }
 
   get hasTextProperty() {
-    return false
+    return false;
   }
 
-  get controls() { }
+  get controls() {}
 
   get nature() {
     return NATURE;

@@ -39,7 +39,7 @@ export default class ReplyButton extends RectPath(Shape) {
     }
   }
 
-  render(context) {
+  _draw(context) {
     var {
       left,
       top,
@@ -59,22 +59,13 @@ export default class ReplyButton extends RectPath(Shape) {
   }
 
   onmousedown(e, hint) {
-    var {
-      left,
-      top,
-      width,
-      height
-    } = this.bounds;
-
-    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
-
-    var button = this.buttonContains(x - left - BUTTONS_MARGIN, y - top - BUTTONS_MARGIN);
+    var button = this.buttonContains();
     if (button) {
       button.handler(this);
     }
   }
 
-  buttonContains(x, y) {
+  buttonContains() {
     return buttons[0];
   }
 

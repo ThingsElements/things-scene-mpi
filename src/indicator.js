@@ -1,4 +1,8 @@
-import { Component, RectPath, Shape } from '@hatiolab/things-scene';
+import {
+  Component,
+  RectPath,
+  Shape
+} from '@hatiolab/things-scene';
 import SegmentDisplay from './segment-display';
 import IMAGE from '../assets/indicator.png';
 
@@ -19,33 +23,25 @@ const NATURE = {
   rotatable: true,
   properties: [{
     type: 'string',
-    label: 'org-box-qty',
-    name: 'org_box_qty'
-  }, {
-    type: 'string',
-    label: 'org-ea-qty',
-    name: 'org_ea_qty'
-  }, {
-    type: 'string',
-    label: 'led-type',
-    name: 'led-type'
+    label: 'segments',
+    name: 'segments'
   }, {
     type: 'select',
     label: 'button color',
     name: 'buttonColor',
     property: {
       options: [{
-        display: 'WHITE',
-        value: 'white'
+        display: 'YELLOW',
+        value: '#ff0'
       }, {
         display: 'GREEN',
-        value: 'green'
+        value: '#0f0'
       }, {
         display: 'RED',
-        value: 'red'
+        value: '#f00'
       }, {
         display: 'BLUE',
-        value: 'blue'
+        value: '#00f'
       }]
     }
   }, {
@@ -71,6 +67,29 @@ const RECT_BUTTON_EDGE = 3;
 
 export default class Indicator extends RectPath(Shape) {
 
+  constructor(...args) {
+    super(...args);
+
+    this.lit = false;
+    this.ledLit = false;
+    this.store = {};
+    this.conf = {
+      seg_role: ['B', 'P'],
+      alignment: 'R',
+      btn_mode: 'S',
+      btn_intvl: 5,
+      bf_on_msg: '',
+      bf_on_msg_t: 10,
+      bf_on_delay: 10,
+      cncl_delay: 10,
+      blink_if_full: true,
+      off_use_res: false,
+      led_bar_mode: 'S',
+      led_bar_intvl: 5,
+      led_bar_brtns: 6
+    };
+  }
+
   static get image() {
     if (!Indicator._image) {
       Indicator._image = new Image();
@@ -82,37 +101,215 @@ export default class Indicator extends RectPath(Shape) {
 
   get colors() {
     return {
-      "R": "red",
-      "G": "green",
-      "B": "blue",
-      "W": "white"
+      R: "#f00",
+      G: "#0f0",
+      B: "#00f",
+      C: "#0ff",
+      M: "#f0f",
+      Y: "#ff0",
+      K: "#0000",
+      W: "#fff"
     }
   }
 
-  get ledTypes() {
+  get btnModes() {
     return {
-      "BLINK": "blink", // 깜박
-      "ALWAYS": "always"  // 항상
+      BLINK: "B", // 깜박
+      ALWAYS: "S" // 항상
     }
   }
 
   get tasks() {
     return {
-      "PICK": "pick",
-      "STOCK": "stock"
+      PICK: "pick",
+      STOCK: "stock",
+      FULL: "full",
+      END: "end",
+      DISPLAY: "display"
     }
+  }
+
+  get alignmentOptions() {
+    return {
+      LEFT: "L",
+      RIGHT: "R"
+    }
+  }
+
+  get segmentRoles() {
+    return {
+      RELAY_SEQ: {
+        INITIAL: 'R', 
+        KEY: 'org_relay'
+      }, 
+      BOXES: {
+        INITIAL: 'B',
+        KEY: 'org_box_qty'
+      }, 
+      PCS: {
+        INITIAL: 'P',
+        KEY: 'org_ea_qty'
+      }
+    }
+  }
+
+  get getConf() {
+    return this.conf;
+  }
+
+  set setConf(conf) {
+    this.conf = conf
+  }
+
+  get gateway() {
+    var gateway = this.parent;
+    while (gateway.constructor.name !== ("Gateway" || "Window")) {
+      gateway = gateway.parent;
+    };
+
+    if (gateway.constructor.name === "Window") return;
+
+    return gateway;
+  }
+
+  get ledRect() {
+    return this.parent.findFirst('rect') || {};
   }
 
   dispose() {
     super.dispose();
   }
 
-  lightOff() {
-    this.setState("org_box_qty", "");
-    this.setState("org_ea_qty", "");
-    this.setState("buttonColor", "black");
+  /**
+   * 
+   * @param {array} args 
+   */
+  setSegmentsState(args) {
+    var stateArr = [];
+    
+    var currentRole = this.store.seg_role? this.store.seg_role: this.getConf.seg_role;
+    currentRole.forEach(role => {
+      var ele;
+      args.forEach(arg => {
+        if (role == arg.role && (arg.value || arg.value >= 0)) {
+          ele = arg.value;
+        }
+      });
+      stateArr.push(ele);
+    });
+    var stateStr = stateArr.join(',');
+    this.setState('segments', stateStr);
+  }
 
+  /**
+   * 
+   * @param {object} data 
+   */
+  jobLightOn(data, lit = true) {
+    var toutDisplayMessage = (indicator) => {
+      indicator.displayMessage(indicator.getConf.bf_on_msg, 'K', false);
+      setTimeout(() => {
+        toutDelayBeforeLightOn(indicator);
+      }, indicator.getConf.bf_on_msg_t * 100);
+    };
+
+    var toutDelayBeforeLightOn = (indicator) => {
+      indicator.lightOff();
+      setTimeout(() => {
+        indicator.lightOn(data, lit);
+      }, indicator.getConf.bf_on_delay * 100);
+    };
+    
+    if(typeof this.getConf.bf_on_msg === 'string' && this.getConf.bf_on_msg.length > 0) {
+      toutDisplayMessage(this);
+    } else if (this.getConf.bf_on_delay > 0) {
+      toutDelayBeforeLightOn(this);
+    } else {
+      this.lightOn(data, lit);
+    }
+  }
+
+  /**
+   * 
+   * @param {object} data 
+   */
+  lightOn(data, lit = true) {
+    var sublen = parseInt(6 / this.getConf.seg_role.length);
+    switch (this.getConf.alignment) {
+      case this.alignmentOptions.LEFT: {
+        let arr = [];
+        Object.values(this.segmentRoles).forEach(role => {
+          if(data[role.KEY] || data[role.KEY] >= 0) {
+            var obj = {
+              role: role.INITIAL,
+              value: data[role.KEY]
+            };
+            arr.push(obj);
+          }
+        });
+        this.setSegmentsState(arr);
+      } break;
+      case this.alignmentOptions.RIGHT:
+      default: {
+        let arr = [];
+        Object.values(this.segmentRoles).forEach(role => {
+          if (data[role.KEY] || data[role.KEY] >= 0) {
+            var obj = {
+              role: role.INITIAL,
+              value: ("  " + data[role.KEY]).substr(-sublen)
+            };
+            arr.push(obj);
+          }
+        });
+        this.setSegmentsState(arr);
+      } break;
+    }
+    if (data.buttonColor) this.setState('buttonColor', String(data.buttonColor));
+    this.lit = lit;
+  }
+
+  lightOff() {
+    this.setState("segments", this.displays.length == 3 ? ',,': ',');
+    this.setState("buttonColor", "#0000");
+    
     this.lit = false;
+  }
+
+  /**
+   * 
+   * @param {string} msg 
+   * @param {string} color 
+   */
+  displayMessage(msg, color = 'K', lit = true) {
+    var eachSegLen = this.displays[0].pattern.length;
+    var allSegLen = eachSegLen * this.displays.length;
+
+    var d = msg? msg : this.getConf.bf_on_msg;
+
+    switch(this.conf.alignment) {
+      case this.alignmentOptions.LEFT: {
+        d = (d + "      ").substr(0, allSegLen);
+      } break;
+      case this.alignmentOptions.RIGHT:
+      default : {
+        d = ("      " + d).substr(-allSegLen);
+      } break;
+    }
+
+    var da = [];
+
+    var i = 1;
+    var startIdx = 0;
+    while(i <= allSegLen) {
+      if(i % eachSegLen == 0) {
+        da.push(d.substr(startIdx, eachSegLen));
+        startIdx = i;
+      }
+      i++;
+    }
+    this.setState("segments", da.join(','));
+    this.setState("buttonColor", this.colors[color]);
+    this.lit = lit;
   }
 
   rectButtonContains(x, y, WRATE, HRATE) {
@@ -123,8 +320,8 @@ export default class Indicator extends RectPath(Shape) {
 
     var extend = RECT_BUTTON_EDGE;
 
-    return (x < Math.max(left + width, left) + extend && x > Math.min(left + width, left) - extend
-      && y < Math.max(top + height, top) + extend && y > Math.min(top + height, top) - extend);
+    return (x < Math.max(left + width, left) + extend && x > Math.min(left + width, left) - extend &&
+      y < Math.max(top + height, top) + extend && y > Math.min(top + height, top) - extend);
   }
 
   mfcButtonContains(x, y, WRATE, HRATE) {
@@ -170,7 +367,10 @@ export default class Indicator extends RectPath(Shape) {
     var WRATE = width / WIDTH;
     var HRATE = height / HEIGHT;
 
-    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
+    var {
+      x,
+      y
+    } = this.transcoordC2S(e.offsetX, e.offsetY);
 
     if (this.rectButtonContains(x - left, y - top, WRATE, HRATE)) {
       onMouseDownBigButton(this);
@@ -200,14 +400,16 @@ export default class Indicator extends RectPath(Shape) {
     var HRATE = height / HEIGHT;
 
     var {
-      org_box_qty = '',
-      org_ea_qty = ''
+      segments = new Array(this.getConf.seg_role.length).join(',')
     } = this.state;
 
-    return [org_box_qty, org_ea_qty].map((value, idx) => {
+    return segments.split(',', 3).map((value, idx, array) => {
       var display = new SegmentDisplay(63 * WRATE, 28 * HRATE);
 
-      display.pattern = '###';
+      display.pattern = 
+        array.length == 2 ? '###' : 
+        array.length == 3 ? '##' : 
+        ''; // 3 넘는 건 안 함
       display.displayAngle = 8;
       display.digitHeight = 20;
       display.digitWidth = 11;
@@ -216,7 +418,7 @@ export default class Indicator extends RectPath(Shape) {
       display.segmentDistance = 0.2;
       display.segmentCount = SegmentDisplay.SevenSegment;
       display.cornerType = SegmentDisplay.SymmetricCorner;
-      display.colorOn = idx ? '#fd0000' : '#007dfe';
+      display.colorOn = idx == 0 ? '#007dfe' : idx == 1 ? '#fd0000' : '#fee400';
       display.colorOff = '#2c2c2c';
 
       display.setValue(value);
@@ -305,7 +507,7 @@ export default class Indicator extends RectPath(Shape) {
     context.fillText('C', 113 * WRATE, 38 * HRATE);
   }
 
-  render(context) {
+  _draw(context) {
     var {
       left,
       top,
@@ -313,7 +515,7 @@ export default class Indicator extends RectPath(Shape) {
       height
     } = this.bounds;
 
-    var color = this.state.buttonColor || 'black';
+    var color = this.state.buttonColor || '#0000';
 
     var WRATE = width / WIDTH;
     var HRATE = height / HEIGHT;
@@ -328,12 +530,21 @@ export default class Indicator extends RectPath(Shape) {
 
     var displays = this.displays;
 
-    context.translate(135 * WRATE, 12 * HRATE);
+    var myCursor = displays.length == 3 ? 1 : 0;
+
+    context.translate((135 - (myCursor * 12)) * WRATE, 12 * HRATE);
     displays[0].draw(context);
 
-    context.translate(75 * WRATE, 0);
-    displays[1].draw(context);
+    if(displays.length >= 2) {
+      context.translate((75 - (myCursor * 25)) * WRATE, 0);
+      displays[1].draw(context);
+    }
 
+    if(displays.length >= 3) {
+      context.translate((75 - (myCursor * 25)) * WRATE, 0);
+      displays[2].draw(context);
+    }
+    
     context.beginPath();
 
     context.restore();
@@ -350,10 +561,10 @@ export default class Indicator extends RectPath(Shape) {
   }
 
   get hasTextProperty() {
-    return false
+    return false;
   }
 
-  get controls() { }
+  get controls() {}
 
   get nature() {
     return NATURE;

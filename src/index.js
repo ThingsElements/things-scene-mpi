@@ -3,3 +3,4 @@ import './gateway';
 import './seven-segment';
 import './boot-button';
 import './reply-button';
+import './auto-clicker';
