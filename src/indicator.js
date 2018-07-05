@@ -88,6 +88,7 @@ export default class Indicator extends RectPath(Shape) {
       led_bar_intvl: 5,
       led_bar_brtns: 6
     };
+    this.currentTask = 'ready';
   }
 
   static get image() {
@@ -125,7 +126,8 @@ export default class Indicator extends RectPath(Shape) {
       STOCK: "stock",
       FULL: "full",
       END: "end",
-      DISPLAY: "display"
+      DISPLAY: "display",
+      READY: "ready"
     }
   }
 
@@ -571,7 +573,15 @@ export default class Indicator extends RectPath(Shape) {
   }
 
   onButton() {
-    onMouseDownMButton(this);
+    switch (this.currentTask) {
+      case this.tasks.FULL: {
+        onMouseDownFButton(this);
+      } break;
+      default: {
+        onMouseDownBigButton(this);
+      } break;
+    }
+
   }
 }
 
