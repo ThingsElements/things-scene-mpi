@@ -88,17 +88,13 @@ export function onmessage(gateway, message) {
       case "IND_ON_REQ":
         {
           if (gateway.state.boot_flag == "false") return;
-
           // 3.4 indicator에 점등 요청
-          gateway.indicators.forEach(indicator => {
-            indicator.readOnly = message.body.read_only;
-          });
-
           let indicators = message && message.body && message.body.ind_on;
 
           // 3.5 인디케이터 점등
           indicators && indicators.forEach(indicator => {
             let component = gateway.findById(indicator.id);
+
             if (!component) return;
             if (component.state.boot_flag == "false") return;
 
@@ -107,13 +103,14 @@ export function onmessage(gateway, message) {
             component.store.action_type = message.body.action_type;
             component.store.ret_args = message.body.ret_args;
 
+            component.readOnly = message.body.read_only; // readonly
+
             Object.keys(component.conf).forEach(opt => {
               if(indicator.hasOwnProperty(opt)) {
                 switch(opt){ // 오버라이드 제외 목록
                   case 'seg_role':
                   case '':
                     return;
-                  break;
                 }
                 component.conf[opt] = indicator[opt];
               }
@@ -129,19 +126,16 @@ export function onmessage(gateway, message) {
                 break;
               case component.tasks.FULL:
                 component.currentTask = component.tasks.FULL;
-                component.displayMessage("FULFUL", c);
+                component.displayMessage("FULL", c);
                 return;
-                break;
               case component.tasks.END:
                 component.currentTask = component.tasks.END;
-                component.displayMessage("ENDEND", c);
+                component.displayMessage("END", c);
                 return;
-                break;
               case component.tasks.DISPLAY:
                 component.currentTask = component.tasks.DISPLAY;
                 c = "K"
                 break;
-              default:
             }
 
             let cookedData = {};
@@ -316,7 +310,7 @@ export function onmessage(gateway, message) {
         } else consoleLogger("Could not find indicator", message.body.id);
       } break;
       default:
-        console.log("unknown message", message);
+        consoleLogger("unknown message", message);
     }
   } else {
     consoleLogger("server reply: ", message);

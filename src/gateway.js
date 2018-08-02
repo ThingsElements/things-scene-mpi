@@ -233,7 +233,7 @@ export default class Gateway extends Container {
         var isFullState = indicator.currentTask == indicator.tasks.FULL;
         if (isLightOn && ((isBtnModeBlink && isNotDisplay) || (indicator.getConf.blink_if_full && isFullState))) {
           indicator.getState('buttonColor') === "#0000" ?
-            indicator.setState('buttonColor', String(indicator.colors[indicator.store.color])) :
+            indicator.setState('buttonColor', String(indicator.colors[indicator.store.color]) || '#0000') :
             indicator.setState('buttonColor', String("#0000"));
         }
       });

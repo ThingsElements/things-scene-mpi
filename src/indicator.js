@@ -219,7 +219,7 @@ export default class Indicator extends RectPath(Shape) {
       indicator.lightOff();
       setTimeout(() => {
         indicator.lightOn(data, lit);
-      }, indicator.getConf.bf_on_delay * 100);
+      }, indicator.getConf.bf_on_delay * 1000);
     };
     
     if(typeof this.getConf.bf_on_msg === 'string' && this.getConf.bf_on_msg.length > 0) {
@@ -574,9 +574,12 @@ export default class Indicator extends RectPath(Shape) {
 
   onButton() {
     switch (this.currentTask) {
-      case this.tasks.FULL: {
-        onMouseDownFButton(this);
+      case this.tasks.END: {
+      //  onMouseDownFButton(this);
       } break;
+      case this.tasks.DISPLAY: {
+        return;
+      }
       default: {
         onMouseDownBigButton(this);
       } break;
