@@ -1,20 +1,16 @@
-import {
-  Component,
-  RectPath,
-  Shape
-} from '@hatiolab/things-scene';
-import boot from '../assets/boot-button.png';
+import { Component, RectPath, Shape } from "@hatiolab/things-scene";
+import boot from "../assets/boot-button.png";
 
-import uuidv4 from 'uuid/v4';
+import uuidv4 from "uuid/v4";
 
-import {
-  consoleLogger
-} from './gateway-on-message';
+import { consoleLogger } from "./gateway-on-message";
 
-export const buttons = [{
-  icon: boot,
-  handler: onclickBoot
-}];
+export const buttons = [
+  {
+    icon: boot,
+    handler: onclickBoot
+  }
+];
 
 const BUTTONS_MARGIN = 10;
 const BUTTONS_GAP = 35;
@@ -24,11 +20,13 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    name: 'publisher',
-    label: 'publisher'
-  }]
+  properties: [
+    {
+      type: "string",
+      name: "publisher",
+      label: "publisher"
+    }
+  ]
 };
 
 export default class BootButton extends RectPath(Shape) {
@@ -48,12 +46,7 @@ export default class BootButton extends RectPath(Shape) {
   }
 
   _draw(context) {
-    var {
-      left,
-      top,
-      width,
-      height
-    } = this.bounds;
+    var { left, top, width, height } = this.bounds;
 
     context.beginPath();
 
@@ -63,23 +56,17 @@ export default class BootButton extends RectPath(Shape) {
     this.drawStroke(context);
 
     context.drawImage(BootButton.image, left, top, width, height);
-
   }
 
   onmousedown(e, hint) {
-    var {
-      left,
-      top,
-      width,
-      height
-    } = this.bounds;
+    var { left, top, width, height } = this.bounds;
 
-    var {
-      x,
-      y
-    } = this.transcoordC2S(e.offsetX, e.offsetY);
+    var { x, y } = this.transcoordC2S(e.offsetX, e.offsetY);
 
-    var button = this.buttonContains(x - left - BUTTONS_MARGIN, y - top - BUTTONS_MARGIN);
+    var button = this.buttonContains(
+      x - left - BUTTONS_MARGIN,
+      y - top - BUTTONS_MARGIN
+    );
     if (button) {
       button.handler(this);
     }
@@ -94,9 +81,8 @@ export default class BootButton extends RectPath(Shape) {
   }
 }
 
-
 function onclickBoot(button) {
-  consoleLogger('onclickBoot');
+  consoleLogger("onclickBoot");
   if (!button.data) return;
   var gateways = button.data;
   for (let i = 0; i < gateways.length; i++) {
@@ -108,16 +94,16 @@ function onclickBoot(button) {
     //   gateway.boot();
     // });
     button.publisher.data = {
-      "properties": {
-        "id": uuidv4(),
-        "time": Date.now(),
-        "dest_id": "mps_server",
-        "source_id": gateways[i],
-        "is_reply": false
+      properties: {
+        id: uuidv4(),
+        time: Date.now(),
+        dest_id: "mps_server",
+        source_id: gateways[i],
+        is_reply: false
       },
-      "body": {
-        "action": "GW_INIT_REQ",
-        "id": gateways[i]
+      body: {
+        action: "GW_INIT_REQ",
+        id: gateways[i]
       }
     };
 
@@ -125,4 +111,4 @@ function onclickBoot(button) {
   }
 }
 
-Component.register('boot-button', BootButton);
+Component.register("boot-button", BootButton);

@@ -1,12 +1,14 @@
-import { Component, RectPath, Shape } from '@hatiolab/things-scene';
-import reply from '../assets/reply-button.png';
+import { Component, RectPath, Shape } from "@hatiolab/things-scene";
+import reply from "../assets/reply-button.png";
 
-import { consoleLogger } from './gateway-on-message';
+import { consoleLogger } from "./gateway-on-message";
 
-export const buttons = [{
-  icon: reply,
-  handler: onClickReply
-}];
+export const buttons = [
+  {
+    icon: reply,
+    handler: onClickReply
+  }
+];
 
 const BUTTONS_MARGIN = 10;
 const BUTTONS_GAP = 35;
@@ -16,11 +18,13 @@ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,
-  properties: [{
-    type: 'string',
-    name: 'publisher',
-    label: 'publisher'
-  }]
+  properties: [
+    {
+      type: "string",
+      name: "publisher",
+      label: "publisher"
+    }
+  ]
 };
 
 export default class ReplyButton extends RectPath(Shape) {
@@ -40,12 +44,7 @@ export default class ReplyButton extends RectPath(Shape) {
   }
 
   _draw(context) {
-    var {
-      left,
-      top,
-      width,
-      height
-    } = this.bounds;
+    var { left, top, width, height } = this.bounds;
 
     context.beginPath();
 
@@ -55,7 +54,6 @@ export default class ReplyButton extends RectPath(Shape) {
     this.drawStroke(context);
 
     context.drawImage(ReplyButton.image, left, top, width, height);
-
   }
 
   onmousedown(e, hint) {
@@ -74,9 +72,8 @@ export default class ReplyButton extends RectPath(Shape) {
   }
 }
 
-
 function onClickReply(button) {
-  consoleLogger('onClickReply');
+  consoleLogger("onClickReply");
 
   var gateways = button.root.findAll("gateway");
 
@@ -87,5 +84,4 @@ function onClickReply(button) {
   });
 }
 
-Component.register('reply-button', ReplyButton);
-
+Component.register("reply-button", ReplyButton);
