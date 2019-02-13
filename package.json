@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/mpi",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "src/index.js",
   "module": "dist/things-scene-mpi.mjs",
   "jsnext:main": "dist/things-scene-mpi.mjs",
@@ -18,9 +18,7 @@
     "@hatiolab/things-shell": "*",
     "@things-scene/clock": "*",
     "@things-scene/mqtt": "*",
-    "@things-scene/random": "*",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-url": "^2.2.0"
+    "@things-scene/random": "*"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.5.0-rc",
