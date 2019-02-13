@@ -1,7 +1,9 @@
 {
   "name": "@things-scene/mpi",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "src/index.js",
+  "module": "dist/things-scene-mpi.mjs",
+  "jsnext:main": "dist/things-scene-mpi.mjs",
   "things-scene": true,
   "license": "http://license.hatiolab.com/EULA",
   "author": "Hatio Lab. <heartyoh@hatiolab.com>",
@@ -9,17 +11,19 @@
     "serve": "things-shell",
     "serve:dev": "things-shell-dev",
     "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
-    "build": "webpack",
-    "prepublish": "webpack"
+    "build": "rollup -c",
+    "prepublish": "rollup -c"
   },
   "devDependencies": {
     "@hatiolab/things-shell": "*",
     "@things-scene/clock": "*",
     "@things-scene/mqtt": "*",
-    "@things-scene/random": "*"
+    "@things-scene/random": "*",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-url": "^2.2.0"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "*",
+    "@hatiolab/things-scene": "^2.5.0-rc",
     "uuid": "^3.2.1"
   }
 }
