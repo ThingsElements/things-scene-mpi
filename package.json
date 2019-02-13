@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/mpi",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "main": "src/index.js",
   "module": "dist/things-scene-mpi.mjs",
   "jsnext:main": "dist/things-scene-mpi.mjs",
