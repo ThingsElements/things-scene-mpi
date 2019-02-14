@@ -8,7 +8,9 @@ import builtins from "rollup-plugin-node-builtins";
 let pkg = require("./package.json");
 let external = Object.keys(pkg.dependencies);
 let plugins = [
-  url(),
+  url({
+    limit: 30000
+  }),
   builtins(),
   resolve({ browser: true, preferBuiltins: true }),
   babel(),
